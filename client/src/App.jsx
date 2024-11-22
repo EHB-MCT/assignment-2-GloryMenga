@@ -1,12 +1,15 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import GeneratePage from './pages/GeneratePage';
+import Home from './pages/Home.jsx';
+import Generate from './pages/Generate.jsx';
+import AboutUs from './pages/AboutUs.jsx';
 
 const App = () => {
   return (
     <Routes>
-      <Route path="/" element={<h1>Home Page</h1>} />
-      <Route path="/generate" element={<GeneratePage />} />
+      <Route path="/" element={<Home />} />
+      <Route path="/generate" element={<Generate/>} />
+      <Route path="/aboutus" element={<AboutUs/>} />
     </Routes>
   );
 };
