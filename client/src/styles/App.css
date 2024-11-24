@@ -28,6 +28,11 @@ ul{
 }
 .left-nav a{
     margin-right: 100px;
+    transition: 0.3s;
+}
+.left-nav a:hover{
+    color: #9c9c9c;
+    transform: scale(1.2);
 }
 .right-nav a{
     margin-left: 13px;
@@ -43,6 +48,11 @@ ul{
     border-radius: 13px;
     background-color: #191919;
     color: white;
+    transition: 0.3s;
+}
+.sign-up-button:hover{
+    background-color: #535353;
+    border: 2px solid #535353;
 }
 .intro-home{
     margin: 150px auto 0 auto;
