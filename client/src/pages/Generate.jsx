@@ -6,13 +6,35 @@ function Generate() {
   const [generated, setGenerated] = useState(false);
   const [prompt, setPrompt] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (prompt.trim()) {
-      setGenerated(true); 
+      await fetch("/api/userdata/save-prompt", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ prompt }),
+      });
+      setGenerated(true);
     }
   };
 
+  const handleShare = async () => {
+    await fetch("/api/userdata/increment-share", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ userId: "someUserId" }), 
+    });
+  };
+
+  const handlePost = async (type) => {
+    await fetch("/api/userdata/save-post", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ type }), 
+    });
+  };
+
+  
   const handleGenerateMore = () => {
     setGenerated(false); 
     setPrompt(""); 

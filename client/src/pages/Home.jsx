@@ -1,9 +1,28 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import Nav from "../components/Nav.jsx";
-import Instruments from "../assets/instruments.jpg";
+
 function Home(){
 
+    useEffect(() => {
+        const startTime = Date.now();
+    
+        const saveSessionDuration = async () => {
+          const sessionDuration = Math.floor((Date.now() - startTime) / 1000);
+          await fetch("/api/userdata/save-session", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ sessionDuration }),
+          });
+        };
+    
+        window.addEventListener("beforeunload", saveSessionDuration);
+        return () => {
+          saveSessionDuration();
+          window.removeEventListener("beforeunload", saveSessionDuration);
+        };
+      }, []);
+      
     return(
         <div className="container">
             <Nav />
