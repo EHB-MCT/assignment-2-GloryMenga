@@ -1,4 +1,40 @@
+@font-face {
+  font-family: 'Facundo';
+  src: url(../assets/fonts/Facundo.otf);
+}
+@font-face {
+  font-family: 'Facundo Bold';
+  src: url(../assets/fonts/FacundoBold.otf);
+}
+@font-face {
+  font-family: 'Facundo Regular';
+  src: url(../assets/fonts/FacundoRegular.otf);
+}
 *{
   margin: 0;
   padding: 0;
+}
+h1{
+  font-family: 'Facundo Bold';
+  font-size: 60px;
+}
+h2{
+  font-family: 'Facundo';
+}
+p{
+  font-family: 'Facundo Regular';
+}
+a{
+  font-family: 'Facundo';
+  text-decoration: none;
+  color: black;
+  font-size: 16px;
+}
+form{
+  display: flex;
+  flex-direction: column;
+}
+button{
+  font-family: 'Facundo';
+  font-size: 16px;
 }

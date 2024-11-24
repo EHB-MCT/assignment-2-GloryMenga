@@ -1,0 +1,160 @@
+/*Nav*/
+nav{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 2px solid #e7e5e5;
+    height: 80px;
+    background-color: white;
+}
+ul{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 96%;
+    
+}
+.left-nav{
+    display: flex;
+    align-items: center;
+}
+.right-nav{
+    display: flex;
+    align-items: center;
+}
+.left-nav a{
+    margin-right: 100px;
+}
+.right-nav a{
+    margin-left: 13px;
+}
+.log-in-button{
+    padding: 10px 30px;
+    border: 2px solid #000;
+    border-radius: 13px;
+}
+.sign-up-button{
+    padding: 10px 30px;
+    border: 2px solid #000;
+    border-radius: 13px;
+    background-color: #191919;
+    color: white;
+}
+.intro-home{
+    margin: 150px auto 0 auto;
+    width: 88%;
+}
+.description{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 40px auto 0 auto;
+    width: 88%;
+}
+.home-buttons{
+    display: flex;
+    flex-direction: row;
+}
+.home-buttons button{
+    background-color: transparent;
+    border-radius: 15px;
+}
+.get-started button{
+    background-color: #191919;
+    border: 1px solid black;
+    color: white;
+    padding: 20px 50px;
+}
+.learn-more button{
+    margin-left: 10px;
+    background-color: #eeebe6;
+    border: 2px solid #cfcdc9;
+    color: black;
+    padding: 20px 30px;
+}
+.description-information{
+    margin-left: 60px;
+    width: 40%;
+}
+.more-information{
+    display: flex;
+    flex-direction: row;  
+    align-items: center;
+    margin: 150px auto 100px auto;
+    width: 88%;
+}
+.image-more-information{
+    border-radius: 15px;
+    width: 600px;
+    height: 600px;
+    background-image: url(../assets/instruments.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.text-more-information{
+    text-align: center;
+    margin-left: 350px;
+    width: 35%;
+}
+/*Generate page*/
+.melody-generator {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.melody-form {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+}
+
+.melody-title {
+    font-size: 35px;
+    text-align: center;
+}
+
+.melody-input {
+    width: 100%;
+    min-height: 120px;
+    padding: 12px;
+    background-color: #f1f1f1; 
+    border: 1px solid rgb(219, 219, 219);
+    border-radius: 0.5rem;
+    color: #000; 
+    resize: vertical;
+}
+
+.melody-input::placeholder {
+    color: rgb(141, 141, 145); 
+}
+
+.melody-input:focus {
+    outline: none;
+    border-color: transparent;
+    box-shadow: 0 0 0 2px #000; 
+}
+
+.melody-submit {
+    padding: 13px 35px;
+    border: none;
+    background-color: #191919; 
+    color: white;
+    border-radius: 0.5rem;
+    transition: background-color 0.2s;
+    font-weight: 500;
+}
+
+.melody-submit:hover {
+    background-color: #383838; 
+}
+
