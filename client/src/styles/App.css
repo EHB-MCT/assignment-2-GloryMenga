@@ -127,12 +127,13 @@ ul{
     align-items: center;
     gap: 40px;
 }
-
+.melody-form p{
+    color: #d1d1d1;
+}
 .melody-title {
     font-size: 35px;
     text-align: center;
 }
-
 .melody-input {
     width: 100%;
     min-height: 120px;

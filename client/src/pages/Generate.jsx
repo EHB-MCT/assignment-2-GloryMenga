@@ -32,11 +32,12 @@ function Generate() {
         {!generated ? (
           <form className="melody-form" onSubmit={handleSubmit}>
             <h1 className="melody-title">Write a prompt and get a melody</h1>
+            <p>Describe the mood you envision for your melody.</p>
             <textarea
               id="prompt"
               name="prompt"
               className="melody-input"
-              placeholder="Write your melody prompt here..."
+              placeholder="A mysterious melody blending delicate high tones with a gracefully slow tempo..."
               required
               value={prompt}
               onChange={(e) => setPrompt(e.target.value)}
