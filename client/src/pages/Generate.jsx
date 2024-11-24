@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import { FiShare2 } from "react-icons/fi";
 import Nav from "../components/Nav.jsx";
 
@@ -10,8 +9,13 @@ function Generate() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (prompt.trim()) {
-      setGenerated(true); // Simulate melody generation
+      setGenerated(true); 
     }
+  };
+
+  const handleGenerateMore = () => {
+    setGenerated(false); 
+    setPrompt(""); 
   };
 
   return (
@@ -19,9 +23,9 @@ function Generate() {
       <Nav />
       {generated && (
         <div className="generate-more">
-          <Link to="/">
-            <span className="generate-arrow">Generate More Melodies</span>
-          </Link>
+            <span className="generate-arrow" onClick={handleGenerateMore}>
+                Generate More Melodies
+          </span>
         </div>
       )}
       <div className="melody-generator">
