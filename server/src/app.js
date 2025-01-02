@@ -35,6 +35,13 @@ async function connectToDatabase() {
 
     //Will be delted later 
     console.log("TTL index created for 'prompts' collection.");
+
+    await db.collection("shares").createIndex(
+      { timestamp: 1 },
+      { expireAfterSeconds: 30 * 24 * 60 * 60 }
+    );
+    //Will be delted later 
+    console.log("TTL index created for 'shares' collection.");
   } catch (error) {
     console.error("Error connecting to MongoDB:", error);
     process.exit(1);
@@ -84,6 +91,31 @@ app.post("/api/prompt", async (req, res) => {
   } catch (error) {
     console.error("Error saving prompt:", error);
     res.status(500).json({ error: "Failed to save prompt" });
+  }
+});
+
+app.post("/api/share", async (req, res) => {
+  try {
+    const { sessionId, shared } = req.body;
+
+    const db = client.db(dbName);
+
+    const result = await db.collection("shares").updateOne(
+      { sessionId }, 
+      {
+        $set: {
+          sessionId,
+          shared,
+          timestamp: new Date(), 
+        },
+      },
+      { upsert: true } 
+    );
+
+    res.status(200).json({ message: "Share action tracked successfully" });
+  } catch (error) {
+    console.error("Error saving share action:", error);
+    res.status(500).json({ error: "Failed to track share action" });
   }
 });
 
