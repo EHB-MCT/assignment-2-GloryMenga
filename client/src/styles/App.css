@@ -258,4 +258,115 @@ ul{
 .private-post:hover {
     background-color: rgb(235, 235, 235);
 }
-  
+/* Community Page */
+.community-container {
+min-height: 100vh;
+background-color: #f9f9f9;
+}
+
+.community-content {
+width: 88%;
+max-width: 800px;
+margin: 0 auto;
+padding-top: 120px;
+}
+
+.community-title {
+margin-bottom: 40px;
+text-align: center;
+}
+
+.posts-container {
+display: flex;
+flex-direction: column;
+gap: 30px;
+margin-bottom: 50px;
+}
+
+.post-card {
+background: white;
+border-radius: 15px;
+padding: 25px;
+box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.post-header {
+display: flex;
+justify-content: space-between;
+align-items: center;
+margin-bottom: 20px;
+}
+
+.user-info {
+display: flex;
+align-items: center;
+gap: 12px;
+}
+
+.user-avatar {
+width: 40px;
+height: 40px;
+border-radius: 50%;
+background: #f1f1f1;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+.user-details h3 {
+font-family: 'Facundo Bold';
+margin: 0;
+font-size: 16px;
+}
+
+.timestamp {
+font-family: 'Facundo Regular';
+color: #9c9c9c;
+font-size: 14px;
+}
+
+.post-prompt {
+margin-bottom: 20px;
+}
+
+.post-prompt p {
+color: #4a4a4a;
+line-height: 1.5;
+}
+
+.post-audio {
+margin-bottom: 20px;
+}
+
+.post-audio .audio-player {
+width: 100%;
+border: 2px solid #f1f1f1;
+}
+
+.post-actions {
+display: flex;
+gap: 20px;
+}
+
+.action-button {
+display: flex;
+align-items: center;
+gap: 6px;
+background: none;
+border: none;
+color: #666;
+cursor: pointer;
+padding: 8px 12px;
+border-radius: 20px;
+transition: all 0.2s ease;
+}
+
+.action-button:hover {
+background: #f1f1f1;
+color: #191919;
+}
+
+.action-button span {
+font-family: 'Facundo Regular';
+font-size: 14px;
+} 

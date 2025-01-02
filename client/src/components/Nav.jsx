@@ -17,8 +17,8 @@ function Nav(){
                     <Link to="/generate">
                         Generate
                     </Link>
-                    <Link to="/aboutus">
-                        About
+                    <Link to="/community">
+                        Community
                     </Link>
                 </div>
                 <div className="right-nav">
