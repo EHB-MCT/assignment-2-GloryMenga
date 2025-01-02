@@ -6,6 +6,7 @@ function Generate() {
   const [generated, setGenerated] = useState(false);
   const [prompt, setPrompt] = useState("");
   const [shared, setShared] = useState(false);
+  const [postMessage, setPostMessage] = useState(""); 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -27,9 +28,9 @@ function Generate() {
         await fetch("http://localhost:5000/api/share", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ 
-            sessionId: sessionStorage.getItem("sessionId"), 
-            shared: false
+          body: JSON.stringify({
+            sessionId: sessionStorage.getItem("sessionId"),
+            shared: false,
           }),
         });
 
@@ -76,10 +77,21 @@ function Generate() {
     }
   };
 
+  const handlePublicPost = () => {
+    setPostMessage("Melody is published in the community page");
+    setTimeout(() => setPostMessage(""), 3000); 
+  };
+
+  const handlePrivatePost = () => {
+    setPostMessage("Melody is privately posted");
+    setTimeout(() => setPostMessage(""), 3000); 
+  };
+
   const handleGenerateMore = () => {
-    setGenerated(false); 
-    setPrompt(""); 
-    setShared(false); 
+    setGenerated(false);
+    setPrompt("");
+    setShared(false);
+    setPostMessage(""); 
   };
 
   useEffect(() => {
@@ -111,8 +123,8 @@ function Generate() {
       <Nav />
       {generated && (
         <div className="generate-more">
-            <span className="generate-arrow" onClick={handleGenerateMore}>
-                Generate More Melodies
+          <span className="generate-arrow" onClick={handleGenerateMore}>
+            Generate More Melodies
           </span>
         </div>
       )}
@@ -141,7 +153,7 @@ function Generate() {
           </form>
         ) : (
           <div className="melody-result">
-          <h1>Your melody is ready to play</h1>
+            <h1>Your melody is ready to play</h1>
             <div className="audio-container">
               <audio controls className="audio-player">
                 <source src="dummy.mp3" type="audio/mpeg" />
@@ -153,11 +165,16 @@ function Generate() {
               </button>
             </div>
             <div className="post-buttons">
-              <button className="public-post">Public Post</button>
-              <button className="private-post">Private Post</button>
+              <button className="public-post" onClick={handlePublicPost}>
+                Public Post
+              </button>
+              <button className="private-post" onClick={handlePrivatePost}>
+                Private Post
+              </button>
             </div>
           </div>
         )}
+        {postMessage && <div className="post-message">{postMessage}</div>}
       </div>
     </>
   );
