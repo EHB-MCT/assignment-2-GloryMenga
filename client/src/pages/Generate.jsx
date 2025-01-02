@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FiShare2 } from "react-icons/fi";
 import Nav from "../components/Nav.jsx";
 
 function Generate() {
   const [generated, setGenerated] = useState(false);
   const [prompt, setPrompt] = useState("");
+  const [shared, setShared] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -22,6 +23,16 @@ function Generate() {
 
         const data = await response.json();
         console.log("Keywords extracted:", data.keywords);
+
+        await fetch("http://localhost:5000/api/share", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ 
+            sessionId: sessionStorage.getItem("sessionId"), 
+            shared: false
+          }),
+        });
+
         setGenerated(true);
       } catch (error) {
         console.error("Error submitting prompt:", error);
@@ -29,10 +40,71 @@ function Generate() {
     }
   };
 
+  const trackShared = async (sharedState) => {
+    try {
+      const sessionId = sessionStorage.getItem("sessionId");
+      await fetch("http://localhost:5000/api/share", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ sessionId, shared: sharedState }),
+      });
+
+      if (sharedState) {
+        setShared(true);
+      }
+      console.log(`Share action tracked: shared=${sharedState}`);
+    } catch (error) {
+      console.error("Error tracking share action:", error);
+    }
+  };
+
+  const handleShare = async () => {
+    try {
+      const sessionId = sessionStorage.getItem("sessionId");
+      const response = await fetch("http://localhost:5000/api/share", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ sessionId, shared: true }),
+      });
+
+      if (response.ok) {
+        setShared(true);
+        console.log("Melody shared successfully");
+      }
+    } catch (error) {
+      console.error("Error sharing melody:", error);
+    }
+  };
+
   const handleGenerateMore = () => {
     setGenerated(false); 
     setPrompt(""); 
+    setShared(false); 
   };
+
+  useEffect(() => {
+    const handleUnload = async () => {
+      if (!shared) {
+        try {
+          const sessionId = sessionStorage.getItem("sessionId");
+          await fetch("http://localhost:5000/api/share", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ sessionId, shared: false }),
+          });
+          console.log("Tracked unshared melody on session close.");
+        } catch (error) {
+          console.error("Error tracking unshared melody:", error);
+        }
+      }
+    };
+
+    window.addEventListener("beforeunload", handleUnload);
+
+    return () => {
+      window.removeEventListener("beforeunload", handleUnload);
+    };
+  }, [shared]);
 
   return (
     <>
@@ -75,7 +147,7 @@ function Generate() {
                 <source src="dummy.mp3" type="audio/mpeg" />
                 Your browser does not support the audio element.
               </audio>
-              <button className="share-button">
+              <button className="share-button" onClick={handleShare} disabled={shared}>
                 <FiShare2 style={{ marginRight: "5px" }} />
                 Share
               </button>
