@@ -128,7 +128,7 @@ The project tracks and aggregates user interaction data as follows:
    ```
 4. Start the backend server:
    ```bash
-   node app.js
+   node src/app.js
    ```
 5. Open a new terminal and navigate to the frontend directory:
    ```bash
