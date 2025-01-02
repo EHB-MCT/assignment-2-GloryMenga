@@ -77,16 +77,56 @@ function Generate() {
     }
   };
 
-  const handlePublicPost = () => {
-    setPostMessage("Melody is published in the community page");
-    setTimeout(() => setPostMessage(""), 3000); 
+  const handlePublicPost = async () => {
+    try {
+      const sessionId = sessionStorage.getItem("sessionId");
+      const response = await fetch("http://localhost:5000/api/post", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ sessionId, publicPost: true, privatePost: false }),
+      });
+  
+      const data = await response.json();
+  
+      if (response.ok) {
+        setPostMessage(data.message);
+      } else {
+        setPostMessage(data.error);
+      }
+  
+      setTimeout(() => setPostMessage(""), 3000);
+    } catch (error) {
+      console.error("Error posting publicly:", error);
+      setPostMessage("Failed to post melody publicly.");
+      setTimeout(() => setPostMessage(""), 3000);
+    }
   };
-
-  const handlePrivatePost = () => {
-    setPostMessage("Melody is privately posted");
-    setTimeout(() => setPostMessage(""), 3000); 
+  
+  const handlePrivatePost = async () => {
+    try {
+      const sessionId = sessionStorage.getItem("sessionId");
+      const response = await fetch("http://localhost:5000/api/post", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ sessionId, publicPost: false, privatePost: true }),
+      });
+  
+      const data = await response.json();
+  
+      if (response.ok) {
+        setPostMessage(data.message);
+      } else {
+        setPostMessage(data.error);
+      }
+  
+      setTimeout(() => setPostMessage(""), 3000);
+    } catch (error) {
+      console.error("Error posting privately:", error);
+      setPostMessage("Failed to post melody privately.");
+      setTimeout(() => setPostMessage(""), 3000);
+    }
   };
-
+  
   const handleGenerateMore = () => {
     setGenerated(false);
     setPrompt("");

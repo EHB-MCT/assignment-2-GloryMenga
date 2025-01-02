@@ -40,8 +40,17 @@ async function connectToDatabase() {
       { timestamp: 1 },
       { expireAfterSeconds: 30 * 24 * 60 * 60 }
     );
+
     //Will be delted later 
     console.log("TTL index created for 'shares' collection.");
+
+    await db.collection("posts").createIndex(
+      { timestamp: 1 },
+      { expireAfterSeconds: 30 * 24 * 60 * 60 }
+    );
+
+    //Will be delted later 
+    console.log("TTL index created for 'posts' collection.");
   } catch (error) {
     console.error("Error connecting to MongoDB:", error);
     process.exit(1);
@@ -127,6 +136,44 @@ function extractKeywords(prompt) {
     .split(" ")
     .filter((word) => word && !stopWords.has(word));
 }
+
+app.post("/api/post", async (req, res) => {
+  try {
+    const { sessionId, publicPost, privatePost } = req.body;
+
+    if (publicPost && privatePost) {
+      return res.status(400).json({ error: "Post cannot be both public and private" });
+    }
+
+    const db = client.db(dbName);
+
+    const existingPost = await db.collection("posts").findOne({ sessionId });
+
+    if (existingPost) {
+      return res.status(400).json({
+        error: existingPost.publicPost
+          ? "You have already posted the melody publicly"
+          : "You have already posted the melody privately",
+      });
+    }
+
+    await db.collection("posts").insertOne({
+      sessionId,
+      publicPost: !!publicPost,
+      privatePost: !!privatePost,
+      timestamp: new Date(),
+    });
+
+    res.status(200).json({
+      message: publicPost
+        ? "Melody is published in the community page"
+        : "Melody is privately posted",
+    });
+  } catch (error) {
+    console.error("Error posting melody:", error);
+    res.status(500).json({ error: "Failed to post melody" });
+  }
+});
 
 connectToDatabase();
 
