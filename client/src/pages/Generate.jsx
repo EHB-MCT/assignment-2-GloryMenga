@@ -6,10 +6,26 @@ function Generate() {
   const [generated, setGenerated] = useState(false);
   const [prompt, setPrompt] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (prompt.trim()) {
-      setGenerated(true); 
+      try {
+        const response = await fetch("http://localhost:5000/api/prompt", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            sessionId: sessionStorage.getItem("sessionId"),
+            prompt,
+            timestamp: new Date().toISOString(),
+          }),
+        });
+
+        const data = await response.json();
+        console.log("Keywords extracted:", data.keywords);
+        setGenerated(true);
+      } catch (error) {
+        console.error("Error submitting prompt:", error);
+      }
     }
   };
 

@@ -55,6 +55,36 @@ app.post('/api/timeSpent', async (req, res) => {
   }
 });
 
+app.post("/api/prompt", async (req, res) => {
+  try {
+    const { sessionId, prompt, timestamp } = req.body;
+
+    const keywords = extractKeywords(prompt); 
+    const db = client.db(dbName);
+
+    await db.collection("prompts").insertOne({
+      sessionId,
+      prompt,
+      keywords,
+      timestamp: new Date(timestamp),
+    });
+
+    res.status(200).json({ message: "Prompt saved successfully", keywords });
+  } catch (error) {
+    console.error("Error saving prompt:", error);
+    res.status(500).json({ error: "Failed to save prompt" });
+  }
+});
+
+function extractKeywords(prompt) {
+  const stopWords = new Set(["and", "the", "is", "in", "to", "with", "a", "of"]);
+  return prompt
+    .toLowerCase()
+    .replace(/[^\w\s]/g, "")
+    .split(" ")
+    .filter((word) => word && !stopWords.has(word));
+}
+
 connectToDatabase();
 
 app.listen(port, () => {
