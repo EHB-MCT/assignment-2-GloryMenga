@@ -17,11 +17,43 @@ async function connectToDatabase() {
   try {
     await client.connect();
     console.log(`Connected to MongoDB, database: ${dbName}`);
+    
+    const db = client.db(dbName);
+    await db.collection('time').createIndex(
+      { "visitDate": 1 },
+      { expireAfterSeconds: 30 * 24 * 60 * 60 } 
+    );
+    
+    console.log('TTL index created successfully');
   } catch (error) {
     console.error("Error connecting to MongoDB:", error);
     process.exit(1);
   }
 }
+
+app.post('/api/timeSpent', async (req, res) => {
+  try {
+    const { sessionId, timeSpent, visitDate } = req.body;
+    
+    const db = client.db(dbName);
+    const result = await db.collection('time').updateOne(
+      
+      { sessionId: sessionId },
+      { 
+        $set: {
+          timeSpent,
+          visitDate: new Date(visitDate)
+        }
+      },
+      { upsert: true } 
+    );
+    
+    res.status(200).json({ message: 'Time spent saved successfully' });
+  } catch (error) {
+    console.error('Error saving time spent:', error);
+    res.status(500).json({ error: 'Failed to save time spent' });
+  }
+});
 
 connectToDatabase();
 
