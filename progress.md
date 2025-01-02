@@ -13,18 +13,24 @@ This project involves building a web application that allows users to generate m
 - **Frontend**
   - Basic navigation setup (`Nav.jsx`).
   - `Generate` page where users can submit prompts and generate melodies.
+  - `Community` page where users can view publicly posted melodies, like, comment, and share them.
 - **Backend**
   - Basic server setup using Express.
   - Connection to MongoDB.
   - Endpoint for saving time spent by users.
+  - Endpoint for saving prompt keywords, number of shares, and public/private sharing data.
 - **Database**
-  - Created `Data-development` database and `time` collection.
-  - Set up TTL index to delete data older than 30 days.
+  - Created `Data-development` database with the following collections:
+    - `time` collection for tracking session durations.
+    - `prompts` collection for storing user-generated prompts and keywords.
+    - `shares` collection for tracking sharing behavior.
+    - `posts` collection for distinguishing between public and private posts.
+  - Set up TTL indexes to delete data older than 30 days.
 
 ### Ongoing
 
-- Simulating user behavior to populate the database for testing.
-- Testing time tracking functionality (frontend and backend integration).
+- Testing data aggregation and ensuring accuracy for all tracked metrics.
+- Considering tracking **Conversion Rates**: The percentage of users who generate melodies after visiting (optional).
 
 ---
 
@@ -33,6 +39,7 @@ This project involves building a web application that allows users to generate m
 ### Frontend
 
 - **React Router**: For navigation between pages.
+- **React Icons**: For SVG icons used in the UI.
 
 ### Backend
 
@@ -78,10 +85,12 @@ This project involves building a web application that allows users to generate m
   - Added user tracking for time spent on the site.
   - Integrated MongoDB for storing user engagement data.
   - Implemented tracking for:
+    - **Time Spent on the Site**: Measured engagement by session duration.
     - **Prompt Keywords**: Recorded user inputs for melody generation prompts.
     - **Number of Shares**: Counted how often users pressed the share button.
     - **Public vs. Private Sharing**: Differentiated between public and private shares.
-    - **Conversion Rates**: Calculated the percentage of users who generated melodies after visiting.
+- **Ongoing**:
+  - Considering tracking **Conversion Rates**: The percentage of users who generate melodies after visiting (optional).
 
 ---
 
