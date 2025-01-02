@@ -17,19 +17,30 @@ async function connectToDatabase() {
   try {
     await client.connect();
     console.log(`Connected to MongoDB, database: ${dbName}`);
-    
+
     const db = client.db(dbName);
-    await db.collection('time').createIndex(
-      { "visitDate": 1 },
+
+    await db.collection("time").createIndex(
+      { visitDate: 1 },
       { expireAfterSeconds: 30 * 24 * 60 * 60 } 
     );
-    
-    console.log('TTL index created successfully');
+
+    //Will be delted later 
+    console.log("TTL index created for 'time' collection.");
+
+    await db.collection("prompts").createIndex(
+      { timestamp: 1 },
+      { expireAfterSeconds: 30 * 24 * 60 * 60 } 
+    );
+
+    //Will be delted later 
+    console.log("TTL index created for 'prompts' collection.");
   } catch (error) {
     console.error("Error connecting to MongoDB:", error);
     process.exit(1);
   }
 }
+
 
 app.post('/api/timeSpent', async (req, res) => {
   try {
@@ -77,7 +88,7 @@ app.post("/api/prompt", async (req, res) => {
 });
 
 function extractKeywords(prompt) {
-  const stopWords = new Set(["and", "the", "is", "in", "to", "with", "a", "of"]);
+  const stopWords = new Set(["and", "the", "is", "in", "to", "with", "a", "of", "that", "an", "as", "like", "by", "on", "you"]);
   return prompt
     .toLowerCase()
     .replace(/[^\w\s]/g, "")
