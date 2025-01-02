@@ -62,7 +62,7 @@ function Community() {
                   </div>
                 </div>
                 <div className="post-prompt">
-                  <p>"{post.prompt}"</p>
+                  <p>{post.prompt}</p>
                 </div>
                 <div className="post-audio">
                   <audio controls className="audio-player">
