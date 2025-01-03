@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import TimeSpentChart from "../components/TimeSpentChart";
+import WordCloudComponent from "../components/WordCloud";
 
 function Dashboard(){
 
@@ -15,15 +16,11 @@ function Dashboard(){
                 <h1>Data overview</h1>
             </div>
             <TimeSpentChart />
-            <div className="prompt-keyword">
-
-            </div>
-
+            <WordCloudComponent />
             <div className="number-shares">
 
             </div>
             <div className="posts">
-
             </div>
             <div className="conversion-rate">
             </div>

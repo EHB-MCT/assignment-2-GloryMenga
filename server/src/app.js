@@ -275,6 +275,29 @@ app.get("/api/timeSpentSummary", async (req, res) => {
   }
 });
 
+app.get("/api/keywordFrequency", async (req, res) => {
+  try {
+    const db = client.db(dbName);
+
+    const keywordData = await db.collection("prompts").aggregate([
+      { $unwind: "$keywords" }, 
+      {
+        $group: {
+          _id: "$keywords",
+          count: { $sum: 1 } 
+        },
+      },
+      { $sort: { count: -1 } },
+      { $limit: 50 } 
+    ]).toArray();
+
+    res.status(200).json(keywordData);
+  } catch (error) {
+    console.error("Error fetching keyword frequency:", error);
+    res.status(500).json({ error: "Failed to fetch keyword frequency" });
+  }
+});
+
 connectToDatabase();
 
 app.listen(port, () => {
