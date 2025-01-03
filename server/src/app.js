@@ -7,12 +7,18 @@ const { MongoClient } = require("mongodb");
 const app = express();
 const port = process.env.PORT || 5000;
 
+// Middleware setup
 app.use(cors());
 app.use(express.json());
 
+// MongoDB Connection Setup
 const client = new MongoClient(process.env.MONGODB_URL);
 const dbName = "Data-development";
 
+/**
+ * Connects to the MongoDB database and sets up necessary indexes.
+ * Ensures TTL (Time-To-Live) indexes are applied to automatically delete old documents.
+ */
 async function connectToDatabase() {
   try {
     await client.connect();
@@ -52,7 +58,17 @@ async function connectToDatabase() {
   }
 }
 
-
+/**
+ * Endpoint to track the time a user spends on the platform.
+ * 
+ * @route POST /api/timeSpent
+ * @param {string} sessionId - Unique identifier for the user session.
+ * @param {number} timeSpent - Time spent by the user in seconds.
+ * @param {string} visitDate - Timestamp of the visit in ISO format.
+ * 
+ * Stores or updates the time spent for a specific session in the "time" collection.
+ * The document is upserted, meaning it is inserted if it does not exist or updated if it does.
+ */
 app.post('/api/timeSpent', async (req, res) => {
   try {
     const { sessionId, timeSpent, visitDate } = req.body;
@@ -77,6 +93,16 @@ app.post('/api/timeSpent', async (req, res) => {
   }
 });
 
+/**
+ * Endpoint to save a user-generated prompt and extract relevant keywords.
+ * 
+ * @route POST /api/prompt
+ * @param {string} sessionId - Unique identifier for the user session.
+ * @param {string} prompt - User-provided text input.
+ * @param {string} timestamp - Time when the prompt was created, in ISO format.
+ * 
+ * Extracts keywords from the prompt using a helper function and stores them along with the session data.
+ */
 app.post("/api/prompt", async (req, res) => {
   try {
     const { sessionId, prompt, timestamp } = req.body;
@@ -98,6 +124,15 @@ app.post("/api/prompt", async (req, res) => {
   }
 });
 
+/**
+ * Endpoint to track whether a user has shared content.
+ * 
+ * @route POST /api/share
+ * @param {string} sessionId - Unique identifier for the user session.
+ * @param {boolean} shared - Boolean indicating whether the content was shared.
+ * 
+ * Updates or inserts a document in the "shares" collection with the sharing status.
+ */
 app.post("/api/share", async (req, res) => {
   try {
     const { sessionId, shared } = req.body;
@@ -123,6 +158,15 @@ app.post("/api/share", async (req, res) => {
   }
 });
 
+/**
+ * Helper function to extract keywords from a given prompt.
+ * 
+ * @param {string} prompt - The input text from which keywords will be extracted.
+ * @returns {Array<string>} - Array of extracted keywords.
+ * 
+ * This function removes punctuation, converts text to lowercase,
+ * and filters out common stop words to identify meaningful keywords.
+ */
 function extractKeywords(prompt) {
   const stopWords = new Set(["and", "the", "is", "in", "to", "with", "a", "of", "that", "an", "as", "like", "by", "on", "you"]);
   return prompt
@@ -132,6 +176,17 @@ function extractKeywords(prompt) {
     .filter((word) => word && !stopWords.has(word));
 }
 
+/**
+ * Endpoint to post a melody either publicly or privately.
+ * 
+ * @route POST /api/post
+ * @param {string} sessionId - Unique identifier for the user session.
+ * @param {boolean} publicPost - Indicates whether the post is public.
+ * @param {boolean} privatePost - Indicates whether the post is private.
+ * 
+ * The function ensures that a post cannot be both public and private.
+ * It also prevents duplicate posts for the same session.
+ */
 app.post("/api/post", async (req, res) => {
   try {
     const { sessionId, publicPost, privatePost } = req.body;
@@ -170,6 +225,16 @@ app.post("/api/post", async (req, res) => {
   }
 });
 
+/**
+ * Endpoint to record a user session.
+ * 
+ * @route POST /api/session
+ * @param {string} sessionId - Unique identifier for the user session.
+ * 
+ * This function ensures that a session is only recorded once.
+ * If a session with the given sessionId already exists, it does not modify it.
+ * Otherwise, it inserts a new session entry with a default `converted` status of false.
+ */
 app.post("/api/session", async (req, res) => {
   try {
     const { sessionId } = req.body;
@@ -194,6 +259,15 @@ app.post("/api/session", async (req, res) => {
   }
 });
 
+/**
+ * Endpoint to mark a user session as converted.
+ * 
+ * @route POST /api/convert
+ * @param {string} sessionId - Unique identifier for the user session.
+ * 
+ * Updates the session's `converted` status to `true` in the "sessions" collection.
+ * If the session does not exist, it returns a 404 error.
+ */
 app.post("/api/convert", async (req, res) => {
   try {
     const { sessionId } = req.body;
@@ -215,6 +289,14 @@ app.post("/api/convert", async (req, res) => {
   }
 });
 
+/**
+ * Endpoint to calculate and retrieve the conversion rate.
+ * 
+ * @route GET /api/conversionRate
+ * 
+ * Computes the percentage of converted sessions out of total sessions.
+ * If there are no sessions recorded, it returns a conversion rate of 0%.
+ */
 app.get("/api/conversionRate", async (req, res) => {
   try {
     const db = client.db(dbName);
@@ -231,7 +313,15 @@ app.get("/api/conversionRate", async (req, res) => {
   }
 });
 
-//visualization
+// ========================= Visualization Endpoints ========================= //
+
+/**
+ * Endpoint to retrieve a summary of time spent by users.
+ * 
+ * @route GET /api/timeSpentSummary
+ * 
+ * Aggregates time spent data to calculate the average time spent and total sessions recorded.
+ */
 app.get("/api/timeSpentSummary", async (req, res) => {
   try {
     const db = client.db(dbName);
@@ -262,6 +352,13 @@ app.get("/api/timeSpentSummary", async (req, res) => {
   }
 });
 
+/**
+ * Endpoint to retrieve the frequency of keywords used in prompts.
+ * 
+ * @route GET /api/keywordFrequency
+ * 
+ * Extracts and counts the occurrence of keywords in user prompts, returning the top 50 most common keywords.
+ */
 app.get("/api/keywordFrequency", async (req, res) => {
   try {
     const db = client.db(dbName);
@@ -285,6 +382,13 @@ app.get("/api/keywordFrequency", async (req, res) => {
   }
 });
 
+/**
+ * Endpoint to retrieve a summary of share actions.
+ * 
+ * @route GET /api/shareSummary
+ * 
+ * Aggregates and calculates the number and percentage of shared vs non-shared actions.
+ */
 app.get("/api/shareSummary", async (req, res) => {
   try {
     const db = client.db(dbName);
@@ -325,6 +429,13 @@ app.get("/api/shareSummary", async (req, res) => {
   }
 });
 
+/**
+ * Endpoint to retrieve a summary of public vs private posts.
+ * 
+ * @route GET /api/publicPrivateSummary
+ * 
+ * Counts the number of public and private posts and calculates their respective percentages.
+ */
 app.get("/api/publicPrivateSummary", async (req, res) => {
   try {
     const db = client.db(dbName);
@@ -355,6 +466,13 @@ app.get("/api/publicPrivateSummary", async (req, res) => {
   }
 });
 
+/**
+ * Endpoint to retrieve a historical summary of conversion rates over time.
+ * 
+ * @route GET /api/conversionRateSummary
+ * 
+ * Groups session data by date and calculates the daily conversion rate.
+ */
 app.get("/api/conversionRateSummary", async (req, res) => {
   try {
     const db = client.db(dbName);
@@ -386,8 +504,18 @@ app.get("/api/conversionRateSummary", async (req, res) => {
   }
 });
 
+/**
+ * Establish connection to the MongoDB database.
+ * This function ensures that the database is properly connected before handling requests.
+ */
 connectToDatabase();
 
+/**
+ * Start the Express server and listen for incoming requests.
+ * 
+ * The server runs on the specified port, which is either set in the environment variables
+ * or defaults to 5000.
+ */
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
