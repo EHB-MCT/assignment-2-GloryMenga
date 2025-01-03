@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import TimeSpentChart from "../components/TimeSpentChart";
 import WordCloudComponent from "../components/WordCloud";
 import ShareAnalyticsChart from "../components/ShareAnalyticsChart";
+import PublicPrivatePostsChart from "../components/PublicPrivatePostsChart";
 
 function Dashboard(){
 
@@ -19,8 +20,7 @@ function Dashboard(){
             <TimeSpentChart />
             <WordCloudComponent />
             <ShareAnalyticsChart />
-            <div className="posts">
-            </div>
+            <PublicPrivatePostsChart />
             <div className="conversion-rate">
             </div>
         </div>

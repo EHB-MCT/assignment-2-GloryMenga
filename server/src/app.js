@@ -338,6 +338,36 @@ app.get("/api/shareSummary", async (req, res) => {
   }
 });
 
+app.get("/api/publicPrivateSummary", async (req, res) => {
+  try {
+    const db = client.db(dbName);
+
+    const postData = await db.collection("posts").aggregate([
+      {
+        $group: {
+          _id: null,
+          publicCount: { $sum: { $cond: ["$publicPost", 1, 0] } },
+          privateCount: { $sum: { $cond: ["$privatePost", 1, 0] } },
+        },
+      }
+    ]).toArray();
+
+    if (postData.length === 0) {
+      return res.status(200).json({ publicCount: 0, privateCount: 0, publicPercentage: 0, privatePercentage: 0 });
+    }
+
+    const { publicCount, privateCount } = postData[0];
+    const total = publicCount + privateCount;
+    const publicPercentage = total > 0 ? ((publicCount / total) * 100).toFixed(2) : 0;
+    const privatePercentage = total > 0 ? ((privateCount / total) * 100).toFixed(2) : 0;
+
+    res.status(200).json({ publicCount, privateCount, publicPercentage, privatePercentage });
+  } catch (error) {
+    console.error("Error fetching public/private post summary:", error);
+    res.status(500).json({ error: "Failed to fetch public/private post summary" });
+  }
+});
+
 connectToDatabase();
 
 app.listen(port, () => {
