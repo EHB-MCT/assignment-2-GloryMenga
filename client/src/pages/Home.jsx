@@ -14,7 +14,7 @@ function Home(){
                     <Link to="/generate" className="get-started">
                     <button>Get started</button>
                     </Link>
-                    <Link to="/aboutus" className="learn-more">
+                    <Link to="/community" className="learn-more">
                     <button>Learn more</button>
                     </Link>
                 </div>

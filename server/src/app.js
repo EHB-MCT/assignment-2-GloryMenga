@@ -188,15 +188,17 @@ app.post("/api/session", async (req, res) => {
     const { sessionId } = req.body;
     const db = client.db(dbName);
 
-    const existingSession = await db.collection("sessions").findOne({ sessionId });
-
-    if (!existingSession) {
-      await db.collection("sessions").insertOne({
-        sessionId,
-        converted: false, 
-        timestamp: new Date(),
-      });
-    }
+    await db.collection("sessions").updateOne(
+      { sessionId }, 
+      { 
+        $setOnInsert: {
+          sessionId,
+          converted: false, 
+          timestamp: new Date(),
+        } 
+      },
+      { upsert: true } 
+    );
 
     res.status(200).json({ message: "Session recorded successfully" });
   } catch (error) {
@@ -214,6 +216,10 @@ app.post("/api/convert", async (req, res) => {
       { sessionId },
       { $set: { converted: true } }
     );
+
+    if (result.matchedCount === 0) {
+      return res.status(404).json({ error: "Session not found" });
+    }
 
     res.status(200).json({ message: "Conversion tracked successfully" });
   } catch (error) {
