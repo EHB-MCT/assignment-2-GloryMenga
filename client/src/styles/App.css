@@ -465,6 +465,9 @@ transform: translateX(0);
 .chart-container h1{
     font-family: 'Poppins', sans-serif;
 }
+.chart-container h2{
+    margin: 15px 0px;
+}
 .average-time {
     font-size: 3rem;
     font-weight: bold;
@@ -483,7 +486,7 @@ transform: translateX(0);
     font-size: 16px;
     color: #333;
     max-width: 700px;
-    margin: 15px auto;
+    margin: 35px auto;
     line-height: 1.5;
 }
 
@@ -509,4 +512,8 @@ transform: translateX(0);
     font-weight: bold;
     position: absolute;
     left: 0;
+}
+
+.share-stats p{
+    font-family: "Poppins",sans-serif;
 }

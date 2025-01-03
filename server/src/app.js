@@ -298,6 +298,46 @@ app.get("/api/keywordFrequency", async (req, res) => {
   }
 });
 
+app.get("/api/shareSummary", async (req, res) => {
+  try {
+    const db = client.db(dbName);
+
+    const shareData = await db.collection("shares").aggregate([
+      {
+        $group: {
+          _id: "$shared",
+          count: { $sum: 1 },
+        },
+      },
+    ]).toArray();
+
+    let sharedCount = 0;
+    let notSharedCount = 0;
+
+    shareData.forEach((item) => {
+      if (item._id === true) {
+        sharedCount = item.count;
+      } else {
+        notSharedCount = item.count;
+      }
+    });
+
+    const total = sharedCount + notSharedCount;
+    const sharedPercentage = total > 0 ? ((sharedCount / total) * 100).toFixed(2) : 0;
+    const notSharedPercentage = total > 0 ? ((notSharedCount / total) * 100).toFixed(2) : 0;
+
+    res.status(200).json({
+      sharedCount,
+      notSharedCount,
+      sharedPercentage,
+      notSharedPercentage,
+    });
+  } catch (error) {
+    console.error("Error fetching share summary:", error);
+    res.status(500).json({ error: "Failed to fetch share summary" });
+  }
+});
+
 connectToDatabase();
 
 app.listen(port, () => {

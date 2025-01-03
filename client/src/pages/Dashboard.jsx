@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import TimeSpentChart from "../components/TimeSpentChart";
 import WordCloudComponent from "../components/WordCloud";
+import ShareAnalyticsChart from "../components/ShareAnalyticsChart";
 
 function Dashboard(){
 
@@ -17,9 +18,7 @@ function Dashboard(){
             </div>
             <TimeSpentChart />
             <WordCloudComponent />
-            <div className="number-shares">
-
-            </div>
+            <ShareAnalyticsChart />
             <div className="posts">
             </div>
             <div className="conversion-rate">
