@@ -12,6 +12,14 @@ function Generate() {
     e.preventDefault();
     if (prompt.trim()) {
       try {
+        const sessionId = sessionStorage.getItem("sessionId");
+
+        await fetch("http://localhost:5000/api/session", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ sessionId }),
+        });
+
         const response = await fetch("http://localhost:5000/api/prompt", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -25,6 +33,12 @@ function Generate() {
         const data = await response.json();
         console.log("Keywords extracted:", data.keywords);
 
+        await fetch("http://localhost:5000/api/convert", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ sessionId }),
+        });
+        
         await fetch("http://localhost:5000/api/share", {
           method: "POST",
           headers: { "Content-Type": "application/json" },

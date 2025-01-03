@@ -51,6 +51,14 @@ async function connectToDatabase() {
 
     //Will be delted later 
     console.log("TTL index created for 'posts' collection.");
+
+    await db.collection("sessions").createIndex(
+      { timestamp: 1 },
+      { expireAfterSeconds: 30 * 24 * 60 * 60 }
+    );
+
+    //Will be delted later 
+    console.log("TTL index created for 'sessions' collection.");
   } catch (error) {
     console.error("Error connecting to MongoDB:", error);
     process.exit(1);
@@ -172,6 +180,61 @@ app.post("/api/post", async (req, res) => {
   } catch (error) {
     console.error("Error posting melody:", error);
     res.status(500).json({ error: "Failed to post melody" });
+  }
+});
+
+app.post("/api/session", async (req, res) => {
+  try {
+    const { sessionId } = req.body;
+    const db = client.db(dbName);
+
+    const existingSession = await db.collection("sessions").findOne({ sessionId });
+
+    if (!existingSession) {
+      await db.collection("sessions").insertOne({
+        sessionId,
+        converted: false, 
+        timestamp: new Date(),
+      });
+    }
+
+    res.status(200).json({ message: "Session recorded successfully" });
+  } catch (error) {
+    console.error("Error tracking session:", error);
+    res.status(500).json({ error: "Failed to track session" });
+  }
+});
+
+app.post("/api/convert", async (req, res) => {
+  try {
+    const { sessionId } = req.body;
+    const db = client.db(dbName);
+
+    const result = await db.collection("sessions").updateOne(
+      { sessionId },
+      { $set: { converted: true } }
+    );
+
+    res.status(200).json({ message: "Conversion tracked successfully" });
+  } catch (error) {
+    console.error("Error updating conversion:", error);
+    res.status(500).json({ error: "Failed to update conversion" });
+  }
+});
+
+app.get("/api/conversionRate", async (req, res) => {
+  try {
+    const db = client.db(dbName);
+
+    const totalSessions = await db.collection("sessions").countDocuments();
+    const convertedSessions = await db.collection("sessions").countDocuments({ converted: true });
+
+    const conversionRate = totalSessions > 0 ? (convertedSessions / totalSessions) * 100 : 0;
+
+    res.status(200).json({ conversionRate: conversionRate.toFixed(2) });
+  } catch (error) {
+    console.error("Error calculating conversion rate:", error);
+    res.status(500).json({ error: "Failed to calculate conversion rate" });
   }
 });
 
