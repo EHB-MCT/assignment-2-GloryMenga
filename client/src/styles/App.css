@@ -386,39 +386,127 @@ color: #191919;
 font-family: 'Facundo Regular';
 font-size: 14px;
 } 
-
+/*Dashboard page*/
 /*Dashboar tab*/
 .dashboard-tab {
-    position: fixed;
-    right: 0;
-    top: 25%;
-    transform: translateY(-50%);
-    background-color: #191919;
-    color: white;
-    padding: 15px;
-    border-radius: 8px 0 0 8px;
+position: fixed;
+right: 0;
+top: 25%;
+transform: translateY(-50%);
+background-color: #191919;
+color: white;
+padding: 15px;
+border-radius: 8px 0 0 8px;
+display: flex;
+align-items: center;
+gap: 10px;
+transition: 0.3s;
+z-index: 1000;
+box-shadow: -2px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard-tab:hover {
+background-color: #383838;
+padding-right: 25px;
+}
+
+.dashboard-tab span {
+font-family: 'Facundo';
+white-space: nowrap;
+opacity: 0;
+transform: translateX(10px);
+transition: 0.3s;
+}
+
+.dashboard-tab.expanded span {
+opacity: 1;
+transform: translateX(0);
+}
+
+.dashboard-container{
     display: flex;
-    align-items: center;
-    gap: 10px;
+    flex-direction: column;
+}
+.back-button{
+    position: relative;
+    padding: 20px;
+}
+.back-button a{
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    color: #666;
+    text-decoration: none;
+    padding: 10px 15px;
+    font-weight: bold;
     transition: 0.3s;
-    z-index: 1000;
-    box-shadow: -2px 2px 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .dashboard-tab:hover {
-    background-color: #383838;
-    padding-right: 25px;
-  }
-  
-  .dashboard-tab span {
-    font-family: 'Facundo';
-    white-space: nowrap;
+}
+
+.back-button a:hover{
+    color: #cfcdc9;
+}
+
+.title-dashboard{
+    margin: 30px 0px;
+    display: flex;
+    justify-content: center;
+}
+
+/*Time spent chart*/
+.chart-container {
+    text-align: center;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.chart-container h1{
+    font-family: 'Poppins', sans-serif;
+}
+.average-time {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #747474;
     opacity: 0;
-    transform: translateX(10px);
-    transition: 0.3s;
-  }
-  
-  .dashboard-tab.expanded span {
+    transform: translateY(30px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.fade-in {
     opacity: 1;
-    transform: translateX(0);
-  }
+    transform: translateY(0);
+}
+
+.chart-description {
+    font-size: 16px;
+    color: #333;
+    max-width: 700px;
+    margin: 15px auto;
+    line-height: 1.5;
+}
+
+.chart-key-points {
+    font-family: 'Facundo', sans-serif;
+    list-style: none;
+    padding: 0;
+    margin: 15px auto;
+    max-width: 700px;
+    text-align: left;
+}
+
+.chart-key-points li {
+    font-size: 14px;
+    margin: 5px 0;
+    padding-left: 15px;
+    position: relative;
+}
+
+.chart-key-points li::before {
+    content: "✔";
+    color: green;
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+}

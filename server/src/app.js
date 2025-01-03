@@ -244,6 +244,37 @@ app.get("/api/conversionRate", async (req, res) => {
   }
 });
 
+//visualization
+app.get("/api/timeSpentSummary", async (req, res) => {
+  try {
+    const db = client.db(dbName);
+
+    const timeData = await db.collection("time").aggregate([
+      {
+        $match: { timeSpent: { $gt: 0 } } 
+      },
+      {
+        $group: {
+          _id: null,
+          averageTimeSpent: { $avg: "$timeSpent" },
+          totalSessions: { $sum: 1 },
+        },
+      }
+    ]).toArray();
+
+    if (timeData.length === 0) {
+      return res.status(200).json({ averageTimeSpent: 0, totalSessions: 0 });
+    }
+
+    const { averageTimeSpent, totalSessions } = timeData[0];
+
+    res.status(200).json({ averageTimeSpent, totalSessions });
+  } catch (error) {
+    console.error("Error fetching time spent data:", error);
+    res.status(500).json({ error: "Failed to fetch time spent data" });
+  }
+});
+
 connectToDatabase();
 
 app.listen(port, () => {
