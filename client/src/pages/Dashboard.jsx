@@ -4,6 +4,7 @@ import TimeSpentChart from "../components/TimeSpentChart";
 import WordCloudComponent from "../components/WordCloud";
 import ShareAnalyticsChart from "../components/ShareAnalyticsChart";
 import PublicPrivatePostsChart from "../components/PublicPrivatePostsChart";
+import ConversionRateChart from "../components/ConversionRateChart";
 
 function Dashboard(){
 
@@ -21,8 +22,7 @@ function Dashboard(){
             <WordCloudComponent />
             <ShareAnalyticsChart />
             <PublicPrivatePostsChart />
-            <div className="conversion-rate">
-            </div>
+            <ConversionRateChart />
         </div>
     );
 }

@@ -368,6 +368,37 @@ app.get("/api/publicPrivateSummary", async (req, res) => {
   }
 });
 
+app.get("/api/conversionRateSummary", async (req, res) => {
+  try {
+    const db = client.db(dbName);
+
+    const conversionData = await db.collection("sessions").aggregate([
+      {
+        $group: {
+          _id: { $dateToString: { format: "%Y-%m-%d", date: "$timestamp" } },
+          totalSessions: { $sum: 1 },
+          convertedSessions: { $sum: { $cond: ["$converted", 1, 0] } },
+        },
+      },
+      {
+        $project: {
+          _id: 1,
+          conversionRate: {
+            $multiply: [{ $divide: ["$convertedSessions", "$totalSessions"] }, 100],
+          },
+          totalSessions: 1,
+        },
+      },
+      { $sort: { _id: 1 } },
+    ]).toArray();
+
+    res.status(200).json(conversionData);
+  } catch (error) {
+    console.error("Error fetching conversion rate summary:", error);
+    res.status(500).json({ error: "Failed to fetch conversion rate summary" });
+  }
+});
+
 connectToDatabase();
 
 app.listen(port, () => {
