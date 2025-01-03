@@ -30,6 +30,9 @@ a{
   color: black;
   font-size: 16px;
 }
+nav{
+  z-index: 50;
+}
 form{
   display: flex;
   flex-direction: column;

@@ -386,3 +386,39 @@ color: #191919;
 font-family: 'Facundo Regular';
 font-size: 14px;
 } 
+
+/*Dashboar tab*/
+.dashboard-tab {
+    position: fixed;
+    right: 0;
+    top: 25%;
+    transform: translateY(-50%);
+    background-color: #191919;
+    color: white;
+    padding: 15px;
+    border-radius: 8px 0 0 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: 0.3s;
+    z-index: 1000;
+    box-shadow: -2px 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .dashboard-tab:hover {
+    background-color: #383838;
+    padding-right: 25px;
+  }
+  
+  .dashboard-tab span {
+    font-family: 'Facundo';
+    white-space: nowrap;
+    opacity: 0;
+    transform: translateX(10px);
+    transition: 0.3s;
+  }
+  
+  .dashboard-tab.expanded span {
+    opacity: 1;
+    transform: translateX(0);
+  }

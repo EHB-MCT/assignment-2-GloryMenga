@@ -19,7 +19,7 @@ function Home(){
                     </Link>
                 </div>
                 <div className="description-information">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed lobortis maximus sem vel aliquet. Sed dignissim ligula ligula, a euismod odio viverra eget. Aliquam sit amet mauris non velit dictum congue in at lacus.</p>
+                    <p>The Melody Generating Page is the core feature of the Melody Generator application. It allows users to create unique melodies based on custom text prompts. The process is simple and interactive</p>
                 </div>
             </div>
             <div className="more-information">
@@ -27,7 +27,9 @@ function Home(){
                 </div> 
                 <div className="text-more-information">
                 <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce id velit justo. Pellentesque elementum imperdiet luctus. Proin vitae erat lacus. Donec vel commodo tortor. Ut vel feugiat ante. Integer luctus felis pellentesque suscipit pulvinar. Aliquam laoreet eros velit, mollis molestie dui hendrerit ut. Interdum et malesuada fames ac ante ipsum primis in faucibus. Sed aliquet molestie mi, non molestie diam viverra sit amet. In et dapibus dolor. Aenean efficitur sit amet tellus eget vehicula. Nullam leo arcu, condimentum ac ante sed, sodales viverra urna. Suspendisse non eros pellentesque ante dapibus maximus.
+                Melody Generator is an interactive web application that allows users to generate unique melodies based on custom text prompts. The platform leverages data aggregation techniques to track user engagement, analyze prompt keywords, and monitor sharing behavior. Users can either share their melodies publicly on the community page or save them privately.
+
+This project not only focuses on AI-powered music generation but also emphasizes user interaction analytics, helping developers understand how users engage with the tool.
                 </p>
                 </div>   
             </div>
