@@ -11,26 +11,34 @@ This project involves building a web application that allows users to generate m
 ### Completed
 
 - **Frontend**
+
   - Basic navigation setup (`Nav.jsx`).
   - `Generate` page where users can submit prompts and generate melodies.
   - `Community` page where users can view publicly posted melodies, like, comment, and share them.
+
 - **Backend**
+
   - Basic server setup using Express.
   - Connection to MongoDB.
   - Endpoint for saving time spent by users.
   - Endpoint for saving prompt keywords, number of shares, and public/private sharing data.
+  - Endpoint for tracking conversion rates.
+
 - **Database**
   - Created `Data-development` database with the following collections:
     - `time` collection for tracking session durations.
     - `prompts` collection for storing user-generated prompts and keywords.
     - `shares` collection for tracking sharing behavior.
     - `posts` collection for distinguishing between public and private posts.
+    - `sessions` collection for tracking visitor sessions and conversion rates.
   - Set up TTL indexes to delete data older than 30 days.
 
 ### Ongoing
 
-- Testing data aggregation and ensuring accuracy for all tracked metrics.
-- Considering tracking **Conversion Rates**: The percentage of users who generate melodies after visiting (optional).
+- **Visualizing Aggregated Data**
+  - Creating visual representations of user engagement data.
+  - Designing charts/graphs for time spent, keyword trends, and sharing behavior.
+  - Analyzing user engagement patterns using collected data.
 
 ---
 
@@ -40,6 +48,7 @@ This project involves building a web application that allows users to generate m
 
 - **React Router**: For navigation between pages.
 - **React Icons**: For SVG icons used in the UI.
+- **Chart.js / D3.js** _(to be added for visualizations)_.
 
 ### Backend
 
@@ -52,8 +61,8 @@ This project involves building a web application that allows users to generate m
 
 ## Next Steps
 
-- Implement visualizations for aggregated data.
-- Optimize the backend to handle more complex queries efficiently.
+- Implement **data visualization** for aggregated data.
+- Optimize the backend for **faster data retrieval and analytics**.
 - Add user authentication for better session tracking (optional).
 - Write tests for both frontend and backend components.
 
@@ -65,6 +74,8 @@ This project involves building a web application that allows users to generate m
   - **Solution**: Tested endpoints using Postman and verified frontend requests in the browser console.
 - **Simulating Realistic User Behavior**: Manually creating varied user behavior can be time-consuming.
   - **Solution**: Wrote scripts to automate the simulation process.
+- **Efficiently Visualizing Data**: Selecting the right tools for clear and interactive analytics.
+  - **Solution**: Researching `Chart.js`, `D3.js`, and other React visualization libraries.
 
 ---
 
@@ -73,6 +84,7 @@ This project involves building a web application that allows users to generate m
 - Setting up a TTL index in MongoDB for automatic data deletion was straightforward and efficient.
 - Tracking user behavior on the frontend requires careful handling of browser events like `beforeunload`.
 - Proper structuring of frontend and backend code improves maintainability and scalability.
+- Data visualization requires **choosing the right libraries** and **optimizing queries** for performance.
 
 ---
 
@@ -89,8 +101,10 @@ This project involves building a web application that allows users to generate m
     - **Prompt Keywords**: Recorded user inputs for melody generation prompts.
     - **Number of Shares**: Counted how often users pressed the share button.
     - **Public vs. Private Sharing**: Differentiated between public and private shares.
-- **Ongoing**:
-  - Considering tracking **Conversion Rates**: The percentage of users who generate melodies after visiting (optional).
+    - **Conversion Rates**: The percentage of users who generate melodies after visiting.
+- **Week 3** (Ongoing):
+  - Implementing **visualization** for all collected data.
+  - Designing dashboards with **charts and graphs** for better data interpretation.
 
 ---
 
@@ -98,5 +112,6 @@ This project involves building a web application that allows users to generate m
 
 - Remember to document all APIs and their expected inputs/outputs for future reference.
 - Consider adding a feature to let users delete their data to align with privacy best practices.
+- Choose **the best visualization tool** for real-time analytics.
 
 ---
