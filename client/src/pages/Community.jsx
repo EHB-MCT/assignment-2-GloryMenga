@@ -1,5 +1,5 @@
 import React from "react";
-import Nav from "../components/Nav.jsx";
+import Nav from "../components/navigation/Nav.jsx";
 import { FiUser, FiHeart, FiShare2, FiMessageSquare } from "react-icons/fi";
 
 function Community() {

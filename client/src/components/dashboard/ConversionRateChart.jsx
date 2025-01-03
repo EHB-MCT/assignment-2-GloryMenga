@@ -53,14 +53,14 @@ const ConversionRateChart = () => {
             
             <p className="chart-description">
                 <strong>This chart tracks the conversion rate over time.</strong> 
-                Conversion rate represents the percentage of users who **generate a melody** 
+                Conversion rate represents the percentage of users who 'generate a melody' 
                 after visiting the website. This helps in analyzing the effectiveness of the platform.
             </p>
 
             <ul className="chart-key-points">
-                <li>A **higher conversion rate** means more users are engaging with melody generation.</li>
-                <li>If the **conversion rate decreases**, improvements might be needed in **UI/UX or content**.</li>
-                <li>Helps measure the **impact of new features** on user engagement.</li>
+                <li>A **higher conversion rate' means more users are engaging with melody generation.</li>
+                <li>If the 'conversion rate decreases', improvements might be needed in 'UI/UX or content'.</li>
+                <li>Helps measure the 'impact of new features' on user engagement.</li>
             </ul>
         </div>
     );

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { FiShare2 } from "react-icons/fi";
-import Nav from "../components/Nav.jsx";
+import Nav from "../components/navigation/Nav.jsx";
 
 function Generate() {
   const [generated, setGenerated] = useState(false);
@@ -13,12 +13,6 @@ function Generate() {
     if (prompt.trim()) {
       try {
         const sessionId = sessionStorage.getItem("sessionId");
-
-        await fetch("http://localhost:5000/api/session", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ sessionId }),
-        });
 
         const response = await fetch("http://localhost:5000/api/prompt", {
           method: "POST",
@@ -38,7 +32,7 @@ function Generate() {
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ sessionId }),
         });
-        
+
         await fetch("http://localhost:5000/api/share", {
           method: "POST",
           headers: { "Content-Type": "application/json" },

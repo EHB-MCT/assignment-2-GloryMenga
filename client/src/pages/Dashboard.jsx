@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import TimeSpentChart from "../components/TimeSpentChart";
-import WordCloudComponent from "../components/WordCloud";
-import ShareAnalyticsChart from "../components/ShareAnalyticsChart";
-import PublicPrivatePostsChart from "../components/PublicPrivatePostsChart";
-import ConversionRateChart from "../components/ConversionRateChart";
+import TimeSpentChart from "../components/dashboard/TimeSpentChart";
+import WordCloudComponent from "../components/dashboard/WordCloud";
+import ShareAnalyticsChart from "../components/dashboard/ShareAnalyticsChart";
+import PublicPrivatePostsChart from "../components/dashboard/PublicPrivatePostsChart";
+import ConversionRateChart from "../components/dashboard/ConversionRateChart";
 
 function Dashboard(){
 

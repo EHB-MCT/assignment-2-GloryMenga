@@ -25,40 +25,27 @@ async function connectToDatabase() {
       { expireAfterSeconds: 30 * 24 * 60 * 60 } 
     );
 
-    //Will be delted later 
-    console.log("TTL index created for 'time' collection.");
+    console.log("TTL index created for any collection.");
 
     await db.collection("prompts").createIndex(
       { timestamp: 1 },
       { expireAfterSeconds: 30 * 24 * 60 * 60 } 
     );
-
-    //Will be delted later 
-    console.log("TTL index created for 'prompts' collection.");
-
+ 
     await db.collection("shares").createIndex(
       { timestamp: 1 },
       { expireAfterSeconds: 30 * 24 * 60 * 60 }
     );
-
-    //Will be delted later 
-    console.log("TTL index created for 'shares' collection.");
 
     await db.collection("posts").createIndex(
       { timestamp: 1 },
       { expireAfterSeconds: 30 * 24 * 60 * 60 }
     );
 
-    //Will be delted later 
-    console.log("TTL index created for 'posts' collection.");
-
     await db.collection("sessions").createIndex(
       { timestamp: 1 },
       { expireAfterSeconds: 30 * 24 * 60 * 60 }
     );
-
-    //Will be delted later 
-    console.log("TTL index created for 'sessions' collection.");
   } catch (error) {
     console.error("Error connecting to MongoDB:", error);
     process.exit(1);
