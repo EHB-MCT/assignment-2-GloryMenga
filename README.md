@@ -1,4 +1,4 @@
-# Melody Generator - Data Aggregation Project
+# 🎵 Melody Generator - Data Aggregation Project
 
 Welcome to the **Melody Generator** project! This is a mock project designed as part of an assignment to demonstrate **data aggregation** techniques using a web application. While the site simulates functionality, it does **not actually generate melodies**. Instead, its primary purpose is to track and collect user interaction data on the website for analytical purposes.
 
@@ -57,41 +57,166 @@ This project is **not a fully functional melody generator**. It was created sole
 3. **Database**:
    - The project uses MongoDB as the database.
    - Collected data is stored in the `Data` collection under the `Data-development` database.
+   - A TTL index is implemented to automatically delete data older than 30 days.
 
 ---
 
 ## 🛠️ Tech Stack
 
-- **Frontend**: React + Vite
-- **Backend**: Node.js + Express.js
-- **Database**: MongoDB
-- **Styling**: CSS
+- **Frontend**: React + Vite ([React/Vite Docs](https://vite.dev/guide/))
+- **Backend**: Node.js + Express.js ([Node Docs](https://nodejs.org/en/learn/getting-started/introduction-to-nodejs)) ([Express Docs](https://expressjs.com/en/starter/installing.html))
+- **Database**: MongoDB ([Mongodb Docs](https://www.mongodb.com/docs/))
+- **Styling**: CSS ([Css Docs](https://devdocs.io/css/))
+- **Visualization**: Chart.js ([Chartjs Docs](https://www.chartjs.org/docs/latest/))
+
+---
+
+## 📊 Data Visualization
+
+### How is the Data Visualized?
+
+Collected data is visualized using Chart.js and displayed on a Dashboard.
+
+- Time Spent on Site: Line chart showing average time per session.
+- Prompt Keywords: Word cloud highlighting the most frequently used words in user prompts.
+- Share Analytics: Pie chart displaying shared vs. unshared melodies.
+- Public vs. Private Posts: Bar chart comparing public vs. private posts.
+- Conversion Rates: Line graph tracking daily conversion trends.Conversion Rates: Line graph tracking daily conversion trends.
 
 ---
 
 ## 🗃️ How Data Aggregation Works
 
-The project tracks and aggregates user interaction data as follows:
+The project uses MongoDB to store and manage user interactions.
 
-1. **Session Duration**:
+1. **Time Spent on the Site**
 
-   - A timer starts when the user opens the website.
-   - The total time spent on the site is sent to the backend when the user leaves or becomes inactive.
+Tracking user engagement based on session duration.
 
-2. **Prompt Tracking**:
+Schema:
 
-   - When a user submits a prompt, it is sent to the backend and stored in the database.
+```bash
+{
+  "sessionId": "string",
+  "timeSpent": "number",
+  "visitDate": "Date"
+}
+```
 
-3. **Share Count**:
+Insights:
 
-   - The backend tracks how many times the "Share" button is clicked.
+- Helps determine if users are spending enough time engaging with the website.
+- Used to improve content or layout to retain users longer.
+- A TTL index automatically deletes records older than 30 days to optimize storage.
 
-4. **Public vs. Private Posts**:
+2. **Prompt Keywords**
 
-   - When users choose "Public Post" or "Private Post," this choice is sent to the backend for aggregation.
+Analyzing the type of prompts users input.
 
-5. **Data Limit**:
-   - To prevent the database from growing indefinitely, older user data is automatically deleted if the maximum document limit is reached.
+Schema:
+
+```bash
+{
+  "sessionId": "string",
+  "prompt": "string",
+  "keywords": ["string"],
+  "timestamp": "Date"
+}
+```
+
+Insights:
+
+- Keywords help filter and categorize content in the community section.
+- Frequently used words guide content recommendations.
+- Data is deleted after 30 days to prevent saturation.
+
+3. **Number of Shares**
+
+Tracking how often users share their melodies.
+
+Schema:
+
+```bash
+{
+  "sessionId": "string",
+  "shared": "boolean",
+  "timestamp": "Date"
+}
+```
+
+Insights:
+
+- Determines whether users find the content share-worthy.
+- Helps assess the need for additional social sharing integrations.
+- Non-shared entries are also logged to identify barriers to sharing.
+
+4. **Public vs. Private Posts**
+
+Analyzing how many users choose to post publicly or privately.
+
+Schema:
+
+```bash
+{
+  "sessionId": "string",
+  "publicPost": "boolean",
+  "privatePost": "boolean",
+  "timestamp": "Date"
+}
+```
+
+Insights:
+
+- Determines the relevance of the community page.
+- If private posts dominate, the public page may need improvement.
+- Data is stored with a TTL index to maintain efficiency.
+
+5. **Conversion Rates**
+
+Measuring how many users generate a melody after visiting the site.
+
+Schema:
+
+```bash
+{
+  "sessionId": "string",
+  "converted": "boolean",
+  "timestamp": "Date"
+}
+```
+
+Insights:
+
+- Helps track the effectiveness of the melody generation feature.
+- Conversion trends can be used to refine UX and UI.
+
+---
+
+## 📌 API Endpoints
+
+| Method | Endpoint              | Description                                |
+| ------ | --------------------- | ------------------------------------------ |
+| `POST` | `/api/timeSpent`      | Stores user time spent.                    |
+| `POST` | `/api/prompt`         | Saves prompts & extracts keywords.         |
+| `POST` | `/api/share`          | Tracks if a melody was shared.             |
+| `POST` | `/api/post`           | Saves public/private posts.                |
+| `POST` | `/api/session`        | Logs a new user session.                   |
+| `POST` | `/api/convert`        | Marks a session as converted.              |
+| `GET`  | `/api/conversionRate` | Returns % of users who generated a melody. |
+
+---
+
+## 🔍 Data Aggregation & Analysis
+
+### ✅ How data is processed:
+
+1. User spends time on the website → Tracked by /api/timeSpent.
+2. User submits a prompt → Extracts keywords via /api/prompt.
+3. User shares melody (or not) → Logged via /api/share.
+4. User posts melody publicly or privately → Tracked via /api/post.
+5. User leaves or converts → Logged via /api/session & /api/convert.
+
+### ✅ Data Insights:
 
 ---
 
@@ -102,15 +227,11 @@ The project tracks and aggregates user interaction data as follows:
 1. **Node.js** installed on your machine.
 2. **MongoDB** (set up locally or via MongoDB Atlas).
 3. `.env` file configuration:
-   - Backend:
-     ```plaintext
-     MONGO_URI=mongodb+srv://<username>:<password>@web.lingaen.mongodb.net/Data-development
-     PORT=5000
-     ```
-   - Frontend:
-     ```plaintext
-     VITE_API_BASE_URL=http://localhost:5000
-     ```
+
+   ```plaintext
+   MONGO_URI=mongodb+srv://<username>:<password>@web.lingaen.mongodb.net/Data-development
+   PORT=5000
+   ```
 
 ### Steps:
 
@@ -146,6 +267,18 @@ The project tracks and aggregates user interaction data as follows:
    ```bash
    http://localhost:5173
    ```
+
+## 🤝 Contribution Guidelines
+
+- Follow the coding standards as defined in .eslintrc.
+- Ensure pull requests are well-documented.
+- Submit bug reports using the Issues section.
+
+## 📜 Code of Conduct
+
+- Be respectful and constructive in discussions.
+- Ensure clear documentation in commits and PRs.
+- Help maintain clean, efficient, and readable code.
 
 ## 📝 License
 
