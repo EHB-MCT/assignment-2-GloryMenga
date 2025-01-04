@@ -1,4 +1,6 @@
-/*Nav*/
+/* =========================== */
+/* Navigation Styles           */
+/* =========================== */
 nav{
     position: fixed;
     top: 0;
@@ -54,6 +56,10 @@ ul{
     background-color: #535353;
     border: 2px solid #535353;
 }
+
+/* =========================== */
+/* Home Page Styles            */
+/* =========================== */
 .intro-home{
     margin: 150px auto 0 auto;
     width: 88%;
@@ -111,7 +117,10 @@ ul{
     margin-left: 350px;
     width: 35%;
 }
-/*Generate page*/
+
+/* =========================== */
+/* Melody Generator Styles     */
+/* =========================== */
 .melody-generator {
     display: flex;
     flex-direction: column;
@@ -274,7 +283,10 @@ ul{
 .private-post:hover {
     background-color: rgb(235, 235, 235);
 }
-/* Community Page */
+
+/* =========================== */
+/* Community Page Styles       */
+/* =========================== */
 .community-container {
 min-height: 100vh;
 background-color: #f9f9f9;
@@ -299,6 +311,7 @@ gap: 30px;
 margin-bottom: 50px;
 }
 
+/* Post Card Styling */
 .post-card {
 background: white;
 border-radius: 15px;
@@ -386,43 +399,10 @@ color: #191919;
 font-family: 'Facundo Regular';
 font-size: 14px;
 } 
-/*Dashboard page*/
-/*Dashboar tab*/
-.dashboard-tab {
-position: fixed;
-right: 0;
-top: 25%;
-transform: translateY(-50%);
-background-color: #191919;
-color: white;
-padding: 15px;
-border-radius: 8px 0 0 8px;
-display: flex;
-align-items: center;
-gap: 10px;
-transition: 0.3s;
-z-index: 1000;
-box-shadow: -2px 2px 10px rgba(0, 0, 0, 0.1);
-}
 
-.dashboard-tab:hover {
-background-color: #383838;
-padding-right: 25px;
-}
-
-.dashboard-tab span {
-font-family: 'Facundo';
-white-space: nowrap;
-opacity: 0;
-transform: translateX(10px);
-transition: 0.3s;
-}
-
-.dashboard-tab.expanded span {
-opacity: 1;
-transform: translateX(0);
-}
-
+/* =========================== */
+/* Dashboard Page Styles       */
+/* =========================== */
 .dashboard-container{
     display: flex;
     flex-direction: column;
@@ -452,7 +432,9 @@ transform: translateX(0);
     justify-content: center;
 }
 
-/*Time spent chart*/
+/* =========================== */
+/* Chart Container Styling     */
+/* =========================== */
 .chart-container {
     text-align: center;
     margin: 20px auto;
@@ -468,6 +450,8 @@ transform: translateX(0);
 .chart-container h2{
     margin: 15px 0px;
 }
+
+/* Styling for Animated Time Spent */
 .average-time {
     font-size: 3rem;
     font-weight: bold;
@@ -514,6 +498,47 @@ transform: translateX(0);
     left: 0;
 }
 
+/* =========================== */
+/* Pie Chart for Sharing Data  */
+/* =========================== */
 .share-stats p{
     font-family: "Poppins",sans-serif;
 }
+
+/* =========================== */
+/* Dashboard Tab Styling       */
+/* =========================== */
+.dashboard-tab {
+    position: fixed;
+    right: 0;
+    top: 25%;
+    transform: translateY(-50%);
+    background-color: #191919;
+    color: white;
+    padding: 15px;
+    border-radius: 8px 0 0 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: 0.3s;
+    z-index: 1000;
+    box-shadow: -2px 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .dashboard-tab:hover {
+    background-color: #383838;
+    padding-right: 25px;
+    }
+    
+    .dashboard-tab span {
+    font-family: 'Facundo';
+    white-space: nowrap;
+    opacity: 0;
+    transform: translateX(10px);
+    transition: 0.3s;
+    }
+    
+    .dashboard-tab.expanded span {
+    opacity: 1;
+    transform: translateX(0);
+    }

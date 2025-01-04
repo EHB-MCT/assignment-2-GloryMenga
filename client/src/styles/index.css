@@ -1,3 +1,6 @@
+/* =========================== */
+/* Custom Font Definitions     */
+/* =========================== */
 @font-face {
   font-family: 'Facundo';
   src: url(../assets/fonts/Facundo.otf);
@@ -10,10 +13,18 @@
   font-family: 'Facundo Regular';
   src: url(../assets/fonts/FacundoRegular.otf);
 }
+
+/* =========================== */
+/* Global Reset & Base Styles  */
+/* =========================== */
 *{
   margin: 0;
   padding: 0;
 }
+
+/* =========================== */
+/* Typography Styles           */
+/* =========================== */
 h1{
   font-family: 'Facundo Bold';
   font-size: 60px;
@@ -24,15 +35,27 @@ h2{
 p{
   font-family: 'Facundo Regular';
 }
+
+/* =========================== */
+/* Links & Buttons             */
+/* =========================== */
 a{
   font-family: 'Facundo';
   text-decoration: none;
   color: black;
   font-size: 16px;
 }
+
+/* =========================== */
+/* Navigation Styles           */
+/* =========================== */
 nav{
   z-index: 50;
 }
+
+/* =========================== */
+/* Form Styles                 */
+/* =========================== */
 form{
   display: flex;
   flex-direction: column;

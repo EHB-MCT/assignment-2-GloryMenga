@@ -3,22 +3,35 @@ import { Bar } from "react-chartjs-2";
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from "chart.js";
 import ChartDataLabels from "chartjs-plugin-datalabels";
 
+// Register Chart.js components and plugins
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, ChartDataLabels);
 
+/**
+ * PublicPrivatePostsChart Component
+ * 
+ * This component visualizes the distribution of public vs. private posts.
+ * The bar chart displays the number of users who have chosen to post their melodies publicly or privately.
+ * Helps in understanding user behavior regarding sharing preferences.
+ */
 const PublicPrivatePostsChart = () => {
+    // State to store public/private post data fetched from the backend
     const [postData, setPostData] = useState(null);
 
+    // Fetch public/private post summary data on component mount
     useEffect(() => {
-        fetch("http://localhost:5000/api/publicPrivateSummary")
+        const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+        fetch(`${API_BASE_URL}/api/publicPrivateSummary`)
             .then(response => response.json())
             .then(data => setPostData(data))
             .catch(error => console.error("Error fetching post data:", error));
     }, []);
 
+    // Display loading message while data is being fetched
     if (!postData) {
         return <p>Loading...</p>;
     }
 
+    // Prepare data for the bar chart
     const chartData = {
         labels: ["Public Posts", "Private Posts"],
         datasets: [
@@ -30,6 +43,7 @@ const PublicPrivatePostsChart = () => {
         ]
     };
 
+    // Chart configuration options
     const chartOptions = {
         responsive: true,
         plugins: {

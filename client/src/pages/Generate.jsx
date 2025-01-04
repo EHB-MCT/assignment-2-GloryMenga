@@ -2,12 +2,34 @@ import React, { useState, useEffect } from "react";
 import { FiShare2 } from "react-icons/fi";
 import Nav from "../components/navigation/Nav.jsx";
 
+/**
+ * Generate Page Component
+ *
+ * This component allows users to:
+ * - Enter a prompt to generate a melody
+ * - Track the melody generation event
+ * - Share, post publicly, or post privately
+ * - Re-generate melodies
+ * 
+ * Data interactions include:
+ * - Saving prompts & extracted keywords
+ * - Tracking shared or unshared melodies
+ * - Managing user session data
+ */
+
 function Generate() {
+  // State management
   const [generated, setGenerated] = useState(false);
   const [prompt, setPrompt] = useState("");
   const [shared, setShared] = useState(false);
   const [postMessage, setPostMessage] = useState(""); 
 
+  /**
+   * Handles prompt submission
+   * - Sends the user input (prompt) to the backend
+   * - Saves extracted keywords for analysis
+   * - Marks session as "converted" (i.e., user generated a melody)
+   */
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (prompt.trim()) {
@@ -49,6 +71,10 @@ function Generate() {
     }
   };
 
+  /**
+   * Tracks sharing behavior
+   * - Updates backend when a user shares their melody
+   */
   const trackShared = async (sharedState) => {
     try {
       const sessionId = sessionStorage.getItem("sessionId");
@@ -67,6 +93,9 @@ function Generate() {
     }
   };
 
+  /**
+   * Handles melody sharing event
+   */
   const handleShare = async () => {
     try {
       const sessionId = sessionStorage.getItem("sessionId");
@@ -85,6 +114,9 @@ function Generate() {
     }
   };
 
+  /**
+   * Handles public post submission
+   */
   const handlePublicPost = async () => {
     try {
       const sessionId = sessionStorage.getItem("sessionId");
@@ -110,6 +142,9 @@ function Generate() {
     }
   };
   
+  /**
+   * Handles private post submission
+   */
   const handlePrivatePost = async () => {
     try {
       const sessionId = sessionStorage.getItem("sessionId");
@@ -135,6 +170,9 @@ function Generate() {
     }
   };
   
+  /**
+   * Resets state to allow users to generate a new melody
+   */
   const handleGenerateMore = () => {
     setGenerated(false);
     setPrompt("");
@@ -142,6 +180,9 @@ function Generate() {
     setPostMessage(""); 
   };
 
+  /**
+   * Tracks unshared melody before the user leaves the page
+   */
   useEffect(() => {
     const handleUnload = async () => {
       if (!shared) {
@@ -169,6 +210,8 @@ function Generate() {
   return (
     <>
       <Nav />
+      
+      {/* Option to generate more melodies */}
       {generated && (
         <div className="generate-more">
           <span className="generate-arrow" onClick={handleGenerateMore}>

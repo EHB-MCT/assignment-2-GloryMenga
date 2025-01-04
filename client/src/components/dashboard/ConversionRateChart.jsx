@@ -4,9 +4,18 @@ import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
+/**
+ * ConversionRateChart Component
+ * 
+ * This component visualizes the conversion rate over time using a line chart.
+ * The conversion rate represents the percentage of users who generate a melody
+ * after visiting the website.
+ */
 const ConversionRateChart = () => {
+    // State to store the conversion rate data fetched from the backend
     const [conversionData, setConversionData] = useState([]);
 
+    // Fetch conversion rate data on component mount
     useEffect(() => {
         fetch("http://localhost:5000/api/conversionRateSummary")
             .then(response => response.json())
@@ -14,6 +23,7 @@ const ConversionRateChart = () => {
             .catch(error => console.error("Error fetching conversion rate data:", error));
     }, []);
 
+    // Prepare data for the line chart
     const chartData = {
         labels: conversionData.map(entry => entry._id), 
         datasets: [
@@ -27,6 +37,7 @@ const ConversionRateChart = () => {
         ]
     };
 
+    // Chart configuration options
     const chartOptions = {
         responsive: true,
         plugins: {

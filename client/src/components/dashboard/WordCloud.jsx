@@ -1,9 +1,21 @@
 import React, { useEffect, useState } from "react";
 import WordCloud from "react-wordcloud";
 
+/**
+ * WordCloudComponent
+ *
+ * This component visualizes the most frequently used keywords in user prompts using a word cloud.
+ * - The larger the word, the more frequently it appears in user prompts.
+ * - Helps identify trends, improve recommendations, and enhance search filters.
+ */
 const WordCloudComponent = () => {
+    // State to store the formatted keyword frequency data
     const [keywords, setKeywords] = useState([]);
 
+    /**
+     * Fetches keyword frequency data from the backend API.
+     * - Transforms the data into a format suitable for the word cloud.
+     */
     useEffect(() => {
         fetch("http://localhost:5000/api/keywordFrequency")
             .then(response => response.json())
@@ -17,6 +29,7 @@ const WordCloudComponent = () => {
             .catch(error => console.error("Error fetching keyword data:", error));
     }, []);
 
+    // Configuration options for the word cloud
     const options = {
         rotations: 2,
         rotationAngles: [-90, 0],

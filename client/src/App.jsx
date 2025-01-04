@@ -8,17 +8,31 @@ import SessionTracker from './components/tracking/SessionTracker.jsx';
 import DashboardTab from './components/common/DashboardTab.jsx';
 import Dashboard from './pages/Dashboard.jsx';
 
+/**
+ * Root Application Component
+ *
+ * This component defines the main structure of the application.
+ * - Includes global trackers (TimeTracker & SessionTracker)
+ * - Displays the floating dashboard tab
+ * - Manages all route definitions using React Router
+ */
+
 const App = () => {
   return (
     <>
-      <TimeTracker />
-      <SessionTracker />
+      {/* Global Trackers */}
+      <TimeTracker /> {/* Tracks total time spent on the site */}
+      <SessionTracker /> {/* Tracks session start and end */}
+
+      {/* Floating Dashboard Navigation */}
       <DashboardTab />
+
+      {/* Application Routes */}
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/generate" element={<Generate/>} />
-        <Route path="/community" element={<Community/>} />
-        <Route path="/dashboard" element={<Dashboard/>} />
+        <Route path="/" element={<Home />} /> {/* Home Page */}
+        <Route path="/generate" element={<Generate/>} /> {/* Melody Generation Page */}
+        <Route path="/community" element={<Community/>} /> {/* Community Page */}
+        <Route path="/dashboard" element={<Dashboard/>} /> {/* Analytics Dashboard */}
       </Routes>
     </>
   );

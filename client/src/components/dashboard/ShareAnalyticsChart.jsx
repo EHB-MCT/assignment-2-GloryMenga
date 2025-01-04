@@ -3,11 +3,21 @@ import { Pie } from "react-chartjs-2";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import ChartDataLabels from "chartjs-plugin-datalabels";
 
+// Register Chart.js components and plugins
 ChartJS.register(ArcElement, Tooltip, Legend, ChartDataLabels);
 
+/**
+ * ShareAnalyticsChart Component
+ * 
+ * This component visualizes the percentage of users who shared or did not share their generated melodies.
+ * A pie chart is used to represent the ratio of shared vs. not shared melodies.
+ * Helps track user engagement and analyze whether sharing features need improvement.
+ */
 const ShareAnalyticsChart = () => {
+    // State to store share summary data fetched from the backend
     const [shareData, setShareData] = useState(null);
 
+    // Fetch share summary data on component mount
     useEffect(() => {
         fetch("http://localhost:5000/api/shareSummary")
             .then(response => response.json())
@@ -17,10 +27,12 @@ const ShareAnalyticsChart = () => {
             .catch(error => console.error("Error fetching share data:", error));
     }, []);
 
+    // Display loading message while data is being fetched
     if (!shareData) {
         return <p>Loading...</p>;
     }
 
+    // Prepare data for the pie chart
     const chartData = {
         labels: ["Shared", "Not Shared"],
         datasets: [
@@ -32,6 +44,7 @@ const ShareAnalyticsChart = () => {
         ],
     };
 
+    // Chart configuration options
     const chartOptions = {
         plugins: {
             legend: {

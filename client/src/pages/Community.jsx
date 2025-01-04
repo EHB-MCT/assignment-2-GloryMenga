@@ -2,7 +2,14 @@ import React from "react";
 import Nav from "../components/navigation/Nav.jsx";
 import { FiUser, FiHeart, FiShare2, FiMessageSquare } from "react-icons/fi";
 
+/**
+ * Community Page Component
+ *
+ * This component displays a list of publicly shared melodies with user details, 
+ * an audio player, and interaction buttons for likes, comments, and shares.
+ */
 function Community() {
+    // Dummy data representing posts (Replace with real data from an API in the future)
     const posts = [
       {
         id: 1,

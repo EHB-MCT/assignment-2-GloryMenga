@@ -1,9 +1,23 @@
 import React, { useEffect, useState } from "react";
 
+/**
+ * TimeSpentChart Component
+ * 
+ * This component displays the average time users spend on the website.
+ * Instead of a line chart, it shows the formatted average time with a fade-in effect.
+ * 
+ * Key Insights:
+ * - Helps track user engagement trends.
+ * - Determines whether users find the platform interesting.
+ * - Assists in making UI/UX improvements.
+ */
 const TimeSpentChart = () => {
+    // State to store the average time spent on the website
     const [averageTime, setAverageTime] = useState(null);
+    // State to control the fade-in animation
     const [fadeIn, setFadeIn] = useState(false);
 
+    // Fetch the average time spent data when the component mounts
     useEffect(() => {
         fetch("http://localhost:5000/api/timeSpentSummary")
             .then(response => response.json())
@@ -16,6 +30,14 @@ const TimeSpentChart = () => {
             .catch(error => console.error("Error fetching time spent data:", error));
     }, []);
 
+    /**
+     * Formats time from seconds to a readable string.
+     * - If below 60 seconds, display only seconds.
+     * - If above 60 seconds, display minutes and seconds.
+     * 
+     * @param {number} seconds - The time duration in seconds.
+     * @returns {string} - Formatted time string.
+     */
     const formatTime = (seconds) => {
         if (seconds < 60) {
             return `${Math.round(seconds)} seconds`;

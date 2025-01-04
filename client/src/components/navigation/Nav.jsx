@@ -2,6 +2,13 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Logo from "../../assets/Logo.svg";
 
+/**
+ * Nav Component
+ *
+ * This component represents the website's navigation bar.
+ * - Provides links to the main sections: Home, Generate, Community.
+ * - Includes authentication buttons for logging in and signing up.
+ */
 function Nav(){
 
     return(
