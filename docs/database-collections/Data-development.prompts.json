@@ -1,0 +1,242 @@
+[{
+  "_id": {
+    "$oid": "67792a6ef197fafd33156827"
+  },
+  "sessionId": "session_1735993957024_lmicmzo6m",
+  "prompt": "A mysterious melody blending delicate high tones with a gracefully slow tempo.",
+  "keywords": [
+    "mysterious",
+    "melody",
+    "blending",
+    "delicate",
+    "high",
+    "tones",
+    "gracefully",
+    "slow",
+    "tempo"
+  ],
+  "timestamp": {
+    "$date": "2025-01-04T12:32:46.412Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67792a94f197fafd33156829"
+  },
+  "sessionId": "session_1735993990850_c3hy933u3",
+  "prompt": "An upbeat melody evoking the energy of a bustling city at dawn.",
+  "keywords": [
+    "upbeat",
+    "melody",
+    "evoking",
+    "energy",
+    "bustling",
+    "city",
+    "at",
+    "dawn"
+  ],
+  "timestamp": {
+    "$date": "2025-01-04T12:33:24.889Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67792acbf197fafd3315682b"
+  },
+  "sessionId": "session_1735994050052_1ezy34bk5",
+  "prompt": "A jazzy tune with playful rhythms and a smooth vibe.",
+  "keywords": [
+    "jazzy",
+    "tune",
+    "playful",
+    "rhythms",
+    "smooth",
+    "vibe"
+  ],
+  "timestamp": {
+    "$date": "2025-01-04T12:34:19.080Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67792b08f197fafd3315682c"
+  },
+  "sessionId": "session_1735994112281_56qqxna4b",
+  "prompt": "A cheerful melody filled with the sounds of a spring morning.",
+  "keywords": [
+    "cheerful",
+    "melody",
+    "filled",
+    "sounds",
+    "spring",
+    "morning"
+  ],
+  "timestamp": {
+    "$date": "2025-01-04T12:35:20.965Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67792b20f197fafd3315682e"
+  },
+  "sessionId": "session_1735994135618_r8ajr8wam",
+  "prompt": "A relaxing melody with the gentle sounds of a flowing river.",
+  "keywords": [
+    "relaxing",
+    "melody",
+    "gentle",
+    "sounds",
+    "flowing",
+    "river"
+  ],
+  "timestamp": {
+    "$date": "2025-01-04T12:35:44.855Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67792b85da1e7c133edf328b"
+  },
+  "sessionId": "session_1735994224111_pi0rjfsg4",
+  "prompt": "A happy and carefree melody that feels like a summer picnic.",
+  "keywords": [
+    "happy",
+    "carefree",
+    "melody",
+    "feels",
+    "summer",
+    "picnic"
+  ],
+  "timestamp": {
+    "$date": "2025-01-04T12:37:25.072Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67792b9bda1e7c133edf328d"
+  },
+  "sessionId": "session_1735994252117_og54x56am",
+  "prompt": "A soothing melody inspired by the gentle sway of a hammock.",
+  "keywords": [
+    "soothing",
+    "melody",
+    "inspired",
+    "gentle",
+    "sway",
+    "hammock"
+  ],
+  "timestamp": {
+    "$date": "2025-01-04T12:37:47.608Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67792bbdda1e7c133edf328f"
+  },
+  "sessionId": "session_1735994292122_oc0wb0jnk",
+  "prompt": "A funky and fresh melody that feels like street art coming alive.",
+  "keywords": [
+    "funky",
+    "fresh",
+    "melody",
+    "feels",
+    "street",
+    "art",
+    "coming",
+    "alive"
+  ],
+  "timestamp": {
+    "$date": "2025-01-04T12:38:21.823Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67792c2cda1e7c133edf3291"
+  },
+  "sessionId": "session_1735994403745_qw8uunw71",
+  "prompt": "A mysterious melody inspired by a magician’s act.",
+  "keywords": [
+    "mysterious",
+    "melody",
+    "inspired",
+    "magicians",
+    "act"
+  ],
+  "timestamp": {
+    "$date": "2025-01-04T12:40:12.671Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67792c65da1e7c133edf3293"
+  },
+  "sessionId": "session_1735994466136_mwknftsw7",
+  "prompt": "A dreamy and surreal tune inspired by clouds drifting.",
+  "keywords": [
+    "dreamy",
+    "surreal",
+    "tune",
+    "inspired",
+    "clouds",
+    "drifting"
+  ],
+  "timestamp": {
+    "$date": "2025-01-04T12:41:09.318Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67792c7cda1e7c133edf3295"
+  },
+  "sessionId": "session_1735994484909_yhnfd298h",
+  "prompt": "A melody that feels like the flicker of candlelight in a dark room.",
+  "keywords": [
+    "melody",
+    "feels",
+    "flicker",
+    "candlelight",
+    "dark",
+    "room"
+  ],
+  "timestamp": {
+    "$date": "2025-01-04T12:41:32.198Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67792cc2da1e7c133edf3297"
+  },
+  "sessionId": "session_1735994559245_78ownenoe",
+  "prompt": "A calming tune inspired by the sound of a light breeze through trees.",
+  "keywords": [
+    "calming",
+    "tune",
+    "inspired",
+    "sound",
+    "light",
+    "breeze",
+    "through",
+    "trees"
+  ],
+  "timestamp": {
+    "$date": "2025-01-04T12:42:42.086Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67792ce2da1e7c133edf3299"
+  },
+  "sessionId": "session_1735994586999_psp58a5yx",
+  "prompt": "A bold and funky tune that feels like a rooftop party.",
+  "keywords": [
+    "bold",
+    "funky",
+    "tune",
+    "feels",
+    "rooftop",
+    "party"
+  ],
+  "timestamp": {
+    "$date": "2025-01-04T12:43:14.123Z"
+  }
+}]

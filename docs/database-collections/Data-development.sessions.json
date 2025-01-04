@@ -1,0 +1,160 @@
+[{
+  "_id": {
+    "$oid": "67792a314bd6af4a5898c3fa"
+  },
+  "sessionId": "session_1735993903991_3cxv3c5vr",
+  "converted": false,
+  "timestamp": {
+    "$date": "2025-01-04T12:31:44.211Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67792a664bd6af4a5898c408"
+  },
+  "sessionId": "session_1735993957024_lmicmzo6m",
+  "converted": true,
+  "timestamp": {
+    "$date": "2025-01-04T12:32:37.033Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67792a884bd6af4a5898c415"
+  },
+  "sessionId": "session_1735993990850_c3hy933u3",
+  "converted": true,
+  "timestamp": {
+    "$date": "2025-01-04T12:33:10.854Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67792ac34bd6af4a5898c428"
+  },
+  "sessionId": "session_1735994050052_1ezy34bk5",
+  "converted": true,
+  "timestamp": {
+    "$date": "2025-01-04T12:34:10.057Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67792b014bd6af4a5898c43e"
+  },
+  "sessionId": "session_1735994112281_56qqxna4b",
+  "converted": true,
+  "timestamp": {
+    "$date": "2025-01-04T12:35:12.290Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67792b194bd6af4a5898c449"
+  },
+  "sessionId": "session_1735994135618_r8ajr8wam",
+  "converted": true,
+  "timestamp": {
+    "$date": "2025-01-04T12:35:35.624Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67792b714bd6af4a5898c470"
+  },
+  "sessionId": "session_1735994224111_pi0rjfsg4",
+  "converted": true,
+  "timestamp": {
+    "$date": "2025-01-04T12:37:04.148Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67792b8d4bd6af4a5898c497"
+  },
+  "sessionId": "session_1735994252117_og54x56am",
+  "converted": true,
+  "timestamp": {
+    "$date": "2025-01-04T12:37:32.122Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67792bb54bd6af4a5898c4aa"
+  },
+  "sessionId": "session_1735994292122_oc0wb0jnk",
+  "converted": true,
+  "timestamp": {
+    "$date": "2025-01-04T12:38:12.129Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67792c254bd6af4a5898c4d1"
+  },
+  "sessionId": "session_1735994403745_qw8uunw71",
+  "converted": false,
+  "timestamp": {
+    "$date": "2025-01-04T12:40:03.754Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67792c634bd6af4a5898c4e6"
+  },
+  "sessionId": "session_1735994466136_mwknftsw7",
+  "converted": true,
+  "timestamp": {
+    "$date": "2025-01-04T12:41:06.145Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67792c764bd6af4a5898c4ed"
+  },
+  "sessionId": "session_1735994484909_yhnfd298h",
+  "converted": true,
+  "timestamp": {
+    "$date": "2025-01-04T12:41:24.912Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67792c974bd6af4a5898c4fa"
+  },
+  "sessionId": "session_1735994517929_1q50ji8pl",
+  "converted": false,
+  "timestamp": {
+    "$date": "2025-01-04T12:41:57.934Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67792caa4bd6af4a5898c505"
+  },
+  "sessionId": "session_1735994537086_q1ns5gujk",
+  "converted": false,
+  "timestamp": {
+    "$date": "2025-01-04T12:42:17.091Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67792cc04bd6af4a5898c50b"
+  },
+  "sessionId": "session_1735994559245_78ownenoe",
+  "converted": true,
+  "timestamp": {
+    "$date": "2025-01-04T12:42:39.251Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67792cdc4bd6af4a5898c517"
+  },
+  "sessionId": "session_1735994586999_psp58a5yx",
+  "converted": true,
+  "timestamp": {
+    "$date": "2025-01-04T12:43:07.003Z"
+  }
+}]

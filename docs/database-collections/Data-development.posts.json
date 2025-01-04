@@ -1,0 +1,121 @@
+[{
+  "_id": {
+    "$oid": "67792a74f197fafd33156828"
+  },
+  "sessionId": "session_1735993957024_lmicmzo6m",
+  "publicPost": false,
+  "privatePost": true,
+  "timestamp": {
+    "$date": "2025-01-04T12:32:52.233Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67792a9cf197fafd3315682a"
+  },
+  "sessionId": "session_1735993990850_c3hy933u3",
+  "publicPost": true,
+  "privatePost": false,
+  "timestamp": {
+    "$date": "2025-01-04T12:33:32.507Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67792b0af197fafd3315682d"
+  },
+  "sessionId": "session_1735994112281_56qqxna4b",
+  "publicPost": false,
+  "privatePost": true,
+  "timestamp": {
+    "$date": "2025-01-04T12:35:22.249Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67792b86da1e7c133edf328c"
+  },
+  "sessionId": "session_1735994224111_pi0rjfsg4",
+  "publicPost": false,
+  "privatePost": true,
+  "timestamp": {
+    "$date": "2025-01-04T12:37:26.664Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67792b9cda1e7c133edf328e"
+  },
+  "sessionId": "session_1735994252117_og54x56am",
+  "publicPost": true,
+  "privatePost": false,
+  "timestamp": {
+    "$date": "2025-01-04T12:37:48.794Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67792bbfda1e7c133edf3290"
+  },
+  "sessionId": "session_1735994292122_oc0wb0jnk",
+  "publicPost": false,
+  "privatePost": true,
+  "timestamp": {
+    "$date": "2025-01-04T12:38:23.003Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67792c2eda1e7c133edf3292"
+  },
+  "sessionId": "session_1735994403745_qw8uunw71",
+  "publicPost": false,
+  "privatePost": true,
+  "timestamp": {
+    "$date": "2025-01-04T12:40:14.248Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67792c66da1e7c133edf3294"
+  },
+  "sessionId": "session_1735994466136_mwknftsw7",
+  "publicPost": true,
+  "privatePost": false,
+  "timestamp": {
+    "$date": "2025-01-04T12:41:10.451Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67792c7dda1e7c133edf3296"
+  },
+  "sessionId": "session_1735994484909_yhnfd298h",
+  "publicPost": false,
+  "privatePost": true,
+  "timestamp": {
+    "$date": "2025-01-04T12:41:33.137Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67792cc5da1e7c133edf3298"
+  },
+  "sessionId": "session_1735994559245_78ownenoe",
+  "publicPost": false,
+  "privatePost": true,
+  "timestamp": {
+    "$date": "2025-01-04T12:42:45.090Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67792ce3da1e7c133edf329a"
+  },
+  "sessionId": "session_1735994586999_psp58a5yx",
+  "publicPost": false,
+  "privatePost": true,
+  "timestamp": {
+    "$date": "2025-01-04T12:43:15.550Z"
+  }
+}]

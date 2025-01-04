@@ -1,0 +1,160 @@
+[{
+  "_id": {
+    "$oid": "67792a574bd6af4a5898c403"
+  },
+  "sessionId": "session_1735993903991_3cxv3c5vr",
+  "timeSpent": 38,
+  "visitDate": {
+    "$date": "2025-01-04T12:32:22.029Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67792a844bd6af4a5898c414"
+  },
+  "sessionId": "session_1735993957024_lmicmzo6m",
+  "timeSpent": 30,
+  "visitDate": {
+    "$date": "2025-01-04T12:33:07.293Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67792abf4bd6af4a5898c427"
+  },
+  "sessionId": "session_1735993990850_c3hy933u3",
+  "timeSpent": 54,
+  "visitDate": {
+    "$date": "2025-01-04T12:34:05.484Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67792af44bd6af4a5898c43a"
+  },
+  "sessionId": "session_1735994050052_1ezy34bk5",
+  "timeSpent": 48,
+  "visitDate": {
+    "$date": "2025-01-04T12:34:58.887Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67792b164bd6af4a5898c448"
+  },
+  "sessionId": "session_1735994112281_56qqxna4b",
+  "timeSpent": 20,
+  "visitDate": {
+    "$date": "2025-01-04T12:35:32.386Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67792b3d4bd6af4a5898c454"
+  },
+  "sessionId": "session_1735994135618_r8ajr8wam",
+  "timeSpent": 35,
+  "visitDate": {
+    "$date": "2025-01-04T12:36:11.560Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67792b8a4bd6af4a5898c491"
+  },
+  "sessionId": "session_1735994224111_pi0rjfsg4",
+  "timeSpent": 24,
+  "visitDate": {
+    "$date": "2025-01-04T12:37:29.021Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67792bb24bd6af4a5898c4a9"
+  },
+  "sessionId": "session_1735994252117_og54x56am",
+  "timeSpent": 37,
+  "visitDate": {
+    "$date": "2025-01-04T12:38:09.194Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67792c1c4bd6af4a5898c4ca"
+  },
+  "sessionId": "session_1735994292122_oc0wb0jnk",
+  "timeSpent": 102,
+  "visitDate": {
+    "$date": "2025-01-04T12:39:55.121Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67792c4d4bd6af4a5898c4dc"
+  },
+  "sessionId": "session_1735994403745_qw8uunw71",
+  "timeSpent": 39,
+  "visitDate": {
+    "$date": "2025-01-04T12:40:43.721Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67792c744bd6af4a5898c4ec"
+  },
+  "sessionId": "session_1735994466136_mwknftsw7",
+  "timeSpent": 16,
+  "visitDate": {
+    "$date": "2025-01-04T12:41:22.980Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67792c924bd6af4a5898c4f9"
+  },
+  "sessionId": "session_1735994484909_yhnfd298h",
+  "timeSpent": 28,
+  "visitDate": {
+    "$date": "2025-01-04T12:41:52.954Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67792ca94bd6af4a5898c502"
+  },
+  "sessionId": "session_1735994517929_1q50ji8pl",
+  "timeSpent": 17,
+  "visitDate": {
+    "$date": "2025-01-04T12:42:15.375Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67792cbe4bd6af4a5898c50a"
+  },
+  "sessionId": "session_1735994537086_q1ns5gujk",
+  "timeSpent": 19,
+  "visitDate": {
+    "$date": "2025-01-04T12:42:36.982Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67792cda4bd6af4a5898c516"
+  },
+  "sessionId": "session_1735994559245_78ownenoe",
+  "timeSpent": 25,
+  "visitDate": {
+    "$date": "2025-01-04T12:43:04.562Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67792ced4bd6af4a5898c51d"
+  },
+  "sessionId": "session_1735994586999_psp58a5yx",
+  "timeSpent": 16,
+  "visitDate": {
+    "$date": "2025-01-04T12:43:23.674Z"
+  }
+}]
