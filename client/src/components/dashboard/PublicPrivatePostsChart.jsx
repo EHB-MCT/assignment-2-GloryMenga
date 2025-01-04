@@ -20,7 +20,7 @@ const PublicPrivatePostsChart = () => {
     // Fetch public/private post summary data on component mount
     useEffect(() => {
         const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
-        fetch(`${API_BASE_URL}/api/publicPrivateSummary`)
+        fetch("http://localhost:5000/api/publicPrivateSummary")
             .then(response => response.json())
             .then(data => setPostData(data))
             .catch(error => console.error("Error fetching post data:", error));
